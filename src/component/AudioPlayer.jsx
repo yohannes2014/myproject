@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { closePlayer } from '../features/musicPlayerSlice';
 import { AiFillCloseSquare, FaCirclePause, VscUnmute, FaPlayCircle, IoVolumeMuteOutline } from '../icons/';
+import { imageUrl, audioUrl } from '../api/musicApi';
 
 const AudioPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(true);
@@ -15,8 +16,8 @@ const AudioPlayer = () => {
   const musicPlayer = useSelector((state) => state.musicPlayer.musicPlayer);
 
   const audioRef = useRef();
-  const myMusic = `http://localhost:5000/audios/${music.audio}`;
-  const myImage = `http://localhost:5000/images/${music.image}`;
+  const myMusic = `${audioUrl}/${music.audio}`;
+  const myImage = `${imageUrl}/${music.image}`;
 
   const playMusic = () => {
     audioRef.current.play();

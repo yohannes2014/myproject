@@ -29,7 +29,7 @@ const MusicForm = () => {
     // Dispatch the form data to your redux store or API
     dispatch(/* action to upload music data */);
 
-    // Reset the form and preview
+    // Reset the form after submit
     setFormData({
       title: '',
       artist: '',

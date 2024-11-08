@@ -4,7 +4,7 @@ import theme from "../../theme/themes";
 
 
 export const HeroSection = styled.div`
-  margin:100px auto;
+    margin:100px auto;
     width: 90%;
     padding: 10px;
 
@@ -36,59 +36,67 @@ export const ListDiscrip = styled.div`
     height: 75px;
     margin-left: 20px;
     width: 100px;
-   display: flex;
-   width: 200px;
-   justify-content: space-between;
-   flex-direction: column;
+    display: flex;
+    width: 200px;
+    justify-content: space-between;
+    flex-direction: column;
  
 `;
 export const DiscSpan = styled.div`
-font-weight: bold;
-color: rgb(2, 2, 58);
+    font-weight: bold;
+    color: rgb(2, 2, 58);
+    width:300px;
 `;
 export const Detail = styled.div`
 
-color: rgb(2, 2, 58);
+    color: rgb(2, 2, 58);
 `;
 export const DiscTitle = styled.div`
-font-weight: bold;
-font-size:25px;
-color: rgb(2, 2, 58);
+    font-weight: bold;
+    font-size:25px;
+    color: rgb(2, 2, 58);
+    width:600px;
 `;
 
 export const AlbumCont = styled.div`
-display:flex;
-flex-direction:column;
+    display:flex;
+    flex-direction:column;
 
 `;
 
 export const AlbumHeader = styled.div`
-height:100px;
-width:100%;
-background-color:wheat;
-border-radius: 40px 0px 40px 0px;
-padding-left:50px;
-margin-bottom:20px;
-display:flex;
+    height:100px;
+    width:100%;
+    background-color:wheat;
+    border-radius: 40px 0px 40px 0px;
+    padding-left:50px;
+    margin-bottom:20px;
+    display:flex;
 `;
 export const GenresHeader = styled.div`
 
-width:100%;
-
-background-color:wheat;
-border-radius: 40px 0px 40px 0px;
-padding:10px 50px;
-margin-bottom:20px;
-display:flex;
+    width:100%;
+    background-color:wheat;
+    border-radius: 40px 0px 40px 0px;
+    padding:10px 50px;
+    margin-bottom:20px;
+    display:flex;
+    justify-content: center;
+    flex-direction: row;
+    position: sticky;
+    top: 150px;
+    z-index: 100px;
+   
+     
 `;
 
 export const ListofMusic = styled.div`
-height:100px;
-width:100%;
+    height:100px;
+    width:100%;
 `;
 
 export const ListAlbum = styled.div`
-  width: 100%;
+    width: 100%;
     height: 80px;
     box-shadow:${theme.shadow.list};
     border-radius: 10px;
@@ -102,4 +110,11 @@ export const ListAlbum = styled.div`
     }
 `;
 
-
+export const Button = styled.button`
+    padding:5px 10px;
+    margin:5px;
+    cursor: pointer;
+    background-color: ${({ selected }) => (selected ? `${theme.colors.primary}` : '#fff')};
+    color: ${({ selected }) => (selected ? '#fff' : '#000')};
+    border-radius: 5px;
+`;

@@ -15,6 +15,23 @@ const navigate = useNavigate()
  navigate('/AddNew')
   }
 
+  const Home = () =>{
+    navigate('/');
+    setIsOpen(!isOpen);
+  }
+  const Genres = () =>{
+    navigate('/Genres')
+    setIsOpen(!isOpen);
+  }
+  const Album = () =>{
+    navigate('/Album')
+    setIsOpen(!isOpen);
+  }
+  const Artist = () =>{
+    navigate('/Artist')
+    setIsOpen(!isOpen);
+  }
+
     
   return (
     <Container>
@@ -29,10 +46,10 @@ const navigate = useNavigate()
      
         <div className='DropDownCon' >
         <div className={!isOpen ? 'dropDown' :'dropDownClose'}>
-            <NavLink onClick={()=>navigate('/')}>Songs</NavLink>
-            <NavLink onClick={()=>navigate('/Album')} >Albums</NavLink>
-            <NavLink onClick={()=>navigate('/Artist')} >Artist</NavLink>
-            <NavLink onClick={()=>navigate('/Genres')} >Genres</NavLink>
+            <NavLink onClick={Home}>Songs</NavLink>
+            <NavLink onClick={Album} >Albums</NavLink>
+            <NavLink onClick={Artist} >Artist</NavLink>
+            <NavLink onClick={Genres} >Genres</NavLink>
             </div>
         </div>
      

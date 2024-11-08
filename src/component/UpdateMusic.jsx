@@ -1,9 +1,11 @@
-import styled from '@emotion/styled';
 import "./Addnew.css";
 import { useSelector, useDispatch } from 'react-redux';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { fetchMusicRequest, updateMusicRequest } from '../features/musicsSlice';
+import { fetchMusicRequest, musicUpdateEnd, musicUpdateSucce, updateMusicRequest } from '../features/musicsSlice';
+import { Cancel, Container, FileUpdate, MyImages, Submit } from "./styled/Form.styles";
+import { UpdatedSuccessfully } from "./Notification";
+import { imageUrl } from "../api/musicApi";
 
 const UpdateMusic = () => {
   const navigate = useNavigate();
@@ -11,6 +13,7 @@ const UpdateMusic = () => {
   const { id } = useParams();
 
   const music = useSelector(state => state.musics.musics.find(music => music._id === id));
+  const updated = useSelector((state)=>state.musics.musicUpdate)
 
 
 
@@ -19,62 +22,23 @@ const UpdateMusic = () => {
   const [album, setAlbum] = useState(music.album);
   const [genres, setGenres] = useState(music.genres);
   const [image, setImage] = useState(music.image);
+  const [imagePreview, setImagePreview] = useState(`${imageUrl}/${music.image}`); 
 
-
-  const Cancel = styled.div`
-    height: 55px;
-    width: 100%;
-    color: #fff;
-    font-size: 1rem;
-    font-weight: 400;
-    margin-top: 30px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    background: rgb(143, 143, 142);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    :hover {
-      background: rgb(105, 105, 105);
+  useEffect(() => {
+    if (image && image instanceof File) {
+      setImagePreview(URL.createObjectURL(image)); 
     }
-  `;
+  }, [image]);
 
-  const Submit = styled.button`
-    height: 55px;
-    width: 100%;
-    color: #fff;
-    font-size: 1rem;
-    font-weight: 400;
-    margin-top: 30px;
-    border: none;
-    cursor: pointer;
-    border-radius: 10px;
-    transition: all 0.2s ease;
-    background: rgb(130, 106, 251);
-    :hover {
-      background: rgb(88, 56, 250);
-    }
-  `;
+  
+  const handleImage = (e) =>{
+  
+    const selectedImage = e.target.files[0];
+    setImage(selectedImage); 
 
-  const File = styled.label`
-    height: 55px;
-    width: 500px;
-    padding: 10px 55px;
-    color: #fff;
-    font-size: 1rem;
-    font-weight: 400;
-    margin-top: 30px;
-    border: none;
-    cursor: pointer;
-    border-radius: 10px;
-    transition: all 0.2s ease;
-    background: rgb(158, 196, 165);
-    :hover {
-      background: rgb(175, 172, 190);
-    }
-  `;
+  
+  }
+
 
   const handleUpdate = (e) => {
     e.preventDefault();
@@ -90,22 +54,33 @@ const UpdateMusic = () => {
     
     dispatch(updateMusicRequest(updatedMusic))
     dispatch(fetchMusicRequest())
+
+    dispatch(musicUpdateSucce())
+
     setTimeout(()=>{
    
-      alert("Music succesfully Updated");
+     
+      dispatch(musicUpdateEnd())
+    },1000)
+    setTimeout(()=>{
+   
       navigate('/')
-    },500)
+    },1500)
   };
 
   const handleCancel = () => {
-    if (window.confirm("Are you sure you want to cancel?")) {
+ 
       navigate('/');
-    }
+    
   };
+
+ 
+  
 
   return (
     <div>
-      <section className="container">
+    {updated &&  <UpdatedSuccessfully />}
+      <Container>
      
         <form className="form" onSubmit={handleUpdate}>
           <div className="input-box">
@@ -122,8 +97,10 @@ const UpdateMusic = () => {
           </div>
           <div className="column">
             <div className="input-box">
-              <File htmlFor='image'>{image ? image.name : 'Update image'}</File>
-              <input type="file" onChange={(e) => setImage(e.target.files[0])} name='image' accept="image/*" id='image' hidden />
+            <FileUpdate htmlFor="image">
+             <MyImages src={imagePreview} alt="Image Preview" />
+            </FileUpdate>
+              <input type="file" onChange={(e) => handleImage(e)} name='image' accept="image/*" id='image' hidden />
             </div>
           </div>
           <div className="column">
@@ -135,7 +112,7 @@ const UpdateMusic = () => {
             </div>
           </div>
         </form>
-      </section>
+      </Container>
     </div>
   );
 };

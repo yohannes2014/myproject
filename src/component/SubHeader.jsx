@@ -7,13 +7,13 @@ const SubHeader = () => {
 
     const routeName = useSelector((state)=>state.musicPlayer.routeName)
     const totalMusicItem = useSelector((state)=>state.musics.totalItem) 
-    console.log(totalMusicItem)
- 
+// this is filter to avoid spechal chracters 
+    const filteredName = decodeURIComponent(routeName);
 
  
   return (
     <Sub className='sub'>
-      <p>Number of {routeName} {totalMusicItem}</p>
+      <p>Number of {filteredName} {totalMusicItem}</p>
     </Sub>
   )
 }

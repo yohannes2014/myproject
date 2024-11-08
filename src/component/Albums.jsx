@@ -3,6 +3,7 @@ import { totalMUsicItem } from '../features/musicsSlice';
 import { useEffect } from 'react';
 import { DiscSpan, HeroSection, ImageList, ListDiscrip, ListItem } from './styled/Album.styles';
 import { useNavigate } from 'react-router-dom';
+import { imageUrl } from '../api/musicApi';
 
 const Albums = () => {
   const albums = useSelector((state)=>state.musics.albums);
@@ -26,11 +27,11 @@ useEffect(()=>{
       {albums.map((item, id)=>(
         <ListItem key={id} onClick={()=>handleClick(item._id)}>
         <ImageList>
-         <img src={`http://localhost:5000/images/${item.songs[0].image}`} className='AlbumCover' alt='Album'/>
+         <img src={`${imageUrl}/${item.songs[0].image}`} className='AlbumCover' alt='Album'/>
         </ImageList>
         <ListDiscrip>
           <DiscSpan>Album : {item._id}</DiscSpan>
-          <DiscSpan>Artist : {item._id}</DiscSpan>
+          <DiscSpan>Artist : {item.songs[0].artist}</DiscSpan>
           <DiscSpan>{item.songs.length} Songs</DiscSpan>
         </ListDiscrip>
         </ListItem>

@@ -1,7 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom';
-import './card.css'
 import { AlbumCont, AlbumHeader, Detail, DiscTitle, HeroSection, ListAlbum, ListDiscrip, ListofMusic } from './styled/Album.styles';
 import { setMusicPlay } from '../features/musicPlayerSlice';
 
@@ -23,8 +22,7 @@ const track = music.songs;
       <AlbumHeader>
         <div className='AlbumPhoto'></div>
         <div>
-          <h3>Artist </h3>
-          <h5>Album Name</h5>
+          <h3>{music._id}</h3>
         </div>
       </AlbumHeader>
       <ListofMusic>

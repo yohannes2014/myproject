@@ -1,11 +1,7 @@
 import styled from '@emotion/styled';
-import MusicCard from '../component/MusicCard'; 
+import MusicCard from '../component/MusicCard';
+
 const Home = () => {
-
-
-
-
-
   const Mycard = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -15,14 +11,11 @@ const Home = () => {
   
     `;
 
-
-
  return(
   <>
-<Mycard>
-   <MusicCard />
-
-</Mycard>
+   <Mycard>
+     <MusicCard />
+   </Mycard>
   </>
   
   )

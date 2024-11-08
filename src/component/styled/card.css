@@ -8,59 +8,43 @@
 
 /* Style the play button */
 #audioPlayer::-webkit-media-controls-panel {
-    background-color: #333; /* Dark background */
-    color: #fff; /* Text color */
+    background-color: #333; 
+    color: #fff; 
 }
 
 /* Change the button styles */
 #audioPlayer::-webkit-media-controls-play-button {
-    background-color: #4CAF50; /* Play button color */
-    border-radius: 5px; /* Rounded corners */
+    background-color: #4CAF50; 
+    border-radius: 5px;
 }
 
 /* Hover effect for the play button */
 #audioPlayer::-webkit-media-controls-play-button:hover {
-    background-color: #45a049; /* Darker green on hover */
+    background-color: #45a049; 
 }
 
 /* Customize the progress bar */
 #audioPlayer::-webkit-media-controls-current-time-display,
 #audioPlayer::-webkit-media-controls-duration-display {
-    color: #fff; /* Time display color */
+    color: #fff; 
 }
 
 /* Style the progress bar */
 #audioPlayer::-webkit-media-controls-volume-slider {
-    background: #777; /* Background color */
+    background: #777;
 }
 
 /* Volume control */
 #audioPlayer::-webkit-media-controls-volume-control {
-    background-color: #555; /* Volume control background */
+    background-color: #555;
 }
 
 /* Mute button */
 #audioPlayer::-webkit-media-controls-mute-button {
-    color: #fff; /* Mute button color */
+    color: #fff; 
 }
 
 
-
-
-
-
-
-
-
-.musicDiscription{
- background-color: #ffffff;
- grid-column: 1/3;
- grid-row: 4/5;
- display: flex;
- justify-content: space-between;
- 
-
-}
 
 .itemDiscription{
 display: flex;
@@ -72,13 +56,6 @@ flex-direction: column;
 font-size: 0.8em;
 color: rgb(11, 1, 45);
    
-
-}
-.cardBtn
-{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
 }
 
 

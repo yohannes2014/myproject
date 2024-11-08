@@ -358,6 +358,13 @@ transition: 0.3s ease-in-out;
   font-size: 5em;
   color: rgb(156, 133, 133);
 }
+.cardBtn
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
 .AlbumCover{
   width: 100%;
   height: 100%;

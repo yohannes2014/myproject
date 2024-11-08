@@ -86,6 +86,7 @@ export const NavLink = styled.div`
     border-radius:2px;
     transition: 0.3s ease-in-out;
   }
+ 
 :hover{
     color: rgb(3, 3, 300); 
 }

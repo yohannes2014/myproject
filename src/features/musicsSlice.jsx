@@ -10,7 +10,11 @@ const initialState = {
     error: null,
     total: 0,
     currentMusic:null,
-    totalItem : 0
+    totalItem : 0,
+    removeMusic:false,
+    musicAdded:false,
+    musicUpdate:false,
+
 
 };
 
@@ -18,9 +22,11 @@ const musicSlice = createSlice({
     name: 'music',
     initialState,
     reducers: {
+
         fetchMusicRequest : (state) => {
-            state.loading = true;
+            state.loading = false;
             state.error = null;
+           
             
         },
         fetchMusicSuccess: (state, action) => {
@@ -117,7 +123,28 @@ const musicSlice = createSlice({
     
         totalMUsicItem : (state, action) => {
             state.totalItem = action.payload
-        }
+        },
+        findMuiscById : (state, action) =>{
+            state.currentMusic = state.musics.find(music => music._id === action.payload);
+        },
+        setRemoveCard : (state, action) =>{
+            state.removeMusic = true;
+        },
+        cancelRemoveCard : (state, action) =>{
+            state.removeMusic = false;
+        },
+        musicAddedSucce : (state)=>{
+            state.musicAdded = true;
+        },
+        musicAddedEnd : (state)=>{
+            state.musicAdded = false;
+        },
+        musicUpdateSucce : (state)=>{
+            state.musicUpdate = true;
+        },
+        musicUpdateEnd : (state)=>{
+            state.musicUpdate = false;
+        },
 
     },
 });
@@ -162,7 +189,18 @@ fetchGenresFailure,
 
 fetchSearchMusic,
 
-totalMUsicItem
+totalMUsicItem,
+
+findMuiscById,
+setRemoveCard,
+
+
+cancelRemoveCard,
+musicAddedSucce,
+musicAddedEnd,
+musicUpdateSucce,
+musicUpdateEnd
+
   
 } = musicSlice.actions
 

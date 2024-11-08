@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import './heroSection.css';
-import { useDispatch, useSelector } from 'react-redux'
-import styled from '@emotion/styled';
-import { GenresHeader, Detail, DiscSpan, HeroSection, ListDiscrip, ListItem } from './styled/Album.styles';
+import { useDispatch, useSelector } from 'react-redux';
+import { GenresHeader, Detail, DiscSpan, HeroSection, ListDiscrip, ListItem, Button } from './styled/Album.styles';
 import { setMusicPlay } from '../features/musicPlayerSlice';
+import { totalMUsicItem } from '../features/musicsSlice';
 
 const Genres = () => {
 
@@ -12,15 +11,14 @@ const Genres = () => {
   const [selectGenres, setSelectGenres] = useState([]);
   const [filteredMusic, setFilteredMusic] = useState(myMusic);
  const dispatch = useDispatch()
-  const Button = styled.button`
-     padding:5px 10px;
-     margin:5px;
-     cursor: pointer;
-     background-color: ${({ selected }) => (selected ? '#007BFF' : '#fff')};
-     color: ${({ selected }) => (selected ? '#fff' : '#000')};
-     border-radius: 5px;
- `;
 
+ let total = genres.length
+
+ 
+ useEffect(()=>{
+   dispatch(totalMUsicItem(total));
+ },[dispatch, total])
+ 
   const filterMusic = () => {
     if (selectGenres.length > 0) {
       let tempoMusic = selectGenres.map((selectedCategory) => {
@@ -60,7 +58,7 @@ const handlePlay = (e) =>{
   return (
     <>
       <HeroSection>
-        <GenresHeader className='filterBtn'>
+        <GenresHeader >
           {genres.map((item) => (
             <div key={item._id} >
               <Button onClick={(e) => handleFilter(item._id)} selected={selectGenres.includes(item._id)} >{item._id}</Button>

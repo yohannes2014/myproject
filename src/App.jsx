@@ -44,6 +44,7 @@ const App = () => {
     dispatch(fetchAlbumsRequest())
     dispatch(fetchArtistsRequest())
     dispatch(fetchGenresRequest())
+    
 
   }
 

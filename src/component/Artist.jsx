@@ -1,17 +1,27 @@
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Detail, DiscSpan, HeroSection, ImageList, ListAlbum, ListDiscrip } from './styled/Album.styles';
+import { useEffect } from 'react';
+import { totalMUsicItem } from '../features/musicsSlice';
+import { imageUrl } from '../api/musicApi';
 const Artist = () => {
 
 const artist = useSelector((state) => state.musics.artist);
 const navigate = useNavigate()
-
+const dispatch = useDispatch()
 const handleArtist = (e) => {
 
   navigate(`/Artist/${e}`);
  
 }
+let total = artist.length
+
+ 
+useEffect(()=>{
+  dispatch(totalMUsicItem(total));
+},[dispatch, total])
+
 
 
 
@@ -20,7 +30,7 @@ const handleArtist = (e) => {
       {artist.map((item) => (
         <ListAlbum key={item._id} onClick={()=>handleArtist(item._id)} >
           <ImageList>
-            <img className='artist_image' src={`http://localhost:5000/images/${item.songs.image}`} alt='i' />
+            <img src={`${imageUrl}/${item.songs[0].image}`} className='AlbumCover' alt='Album'/>
           </ImageList>
           <ListDiscrip className='listDiscrip'>
           <DiscSpan className='artName'>{item._id}</DiscSpan>

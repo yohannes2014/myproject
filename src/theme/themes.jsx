@@ -20,6 +20,7 @@ const theme = {
 
     contactHeight:['30px','29px'],
     contactFont:['1.8vh'],
+  
 
     width: ['100%', '98%'],
     breakpoints: ['1250px', '1024px','990px', '850px', '750px', '650px', '480px', '390px'],

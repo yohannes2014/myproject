@@ -70,3 +70,6 @@ export const fetchGenresApi = () => {
 export const groupByGenresApi = () =>{
   return axios.get('http://localhost:5000/api/music/genres');
 }
+
+export const imageUrl = 'http://localhost:5000/images'
+export const audioUrl = 'http://localhost:5000/audios'

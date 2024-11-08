@@ -1,14 +1,15 @@
-import styled from '@emotion/styled';
 import "./Addnew.css";
-import {addMusicRequest, fetchMusicRequest, fetchTotalRequest} from '../features/musicsSlice'
-import { useDispatch } from 'react-redux';
+import {addMusicRequest, fetchMusicRequest, fetchTotalRequest, musicAddedEnd, musicAddedSucce} from '../features/musicsSlice'
+import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { defaultImage } from '../api/musicApi';
 import { useNavigate } from 'react-router-dom';
+import { Cancel, Container, File, Submit } from './styled/Form.styles';
+import { AddedSuccesfully } from "./Notification";
 
 const NewMusic = () => {
   const dispatch = useDispatch();
-  
+  const newMusic = useSelector((state)=>state.musics.musicAdded)
   const [title, setTitle] = useState('');
   const [artist, setArtist] = useState('');
   const [album, setAlbum] = useState('');
@@ -18,66 +19,10 @@ const NewMusic = () => {
 
  
 
-  const Cancel = styled.div`
-    height: 55px;
-    width: 100%;
-    color: #fff;
-    font-size: 1rem;
-    font-weight: 400;
-    margin-top: 30px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    background: rgb(143, 143, 142);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    :hover {
-      background: rgb(105, 105, 105);
-    }
-  `;
-
-  const Submit = styled.button`
-    height: 55px;
-    width: 100%;
-    color: #fff;
-    font-size: 1rem;
-    font-weight: 400;
-    margin-top: 30px;
-    border: none;
-    cursor: pointer;
-    border-radius: 10px;
-    transition: all 0.2s ease;
-    background: rgb(130, 106, 251);
-    :hover {
-      background: rgb(88, 56, 250);
-    }
-  `;
-
-  const File = styled.label`
-    height: 55px;
-    width: 100%;
-    padding: 10px 55px;
-    color: #fff;
-    font-size: 1rem;
-    font-weight: 400;
-    margin-top: 30px;
-    border: none;
-    cursor: pointer;
-    border-radius: 10px;
-    transition: all 0.2s ease;
-    background: rgb(158, 196, 165);
-    :hover {
-      background: rgb(175, 172, 190);
-    }
-  `;
-
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Basic validation
+   
     if (!title || !artist || !album || !genres || !audio) {
       alert('Please fill out all fields and select files.');
       return;
@@ -93,14 +38,22 @@ const NewMusic = () => {
     
 
     dispatch(addMusicRequest(formData));
-    
+    dispatch(musicAddedSucce())
+   
+
     
    setTimeout(()=>{
-    alert("Music succesfully added");
-    dispatch(fetchTotalRequest())
+  
     dispatch(fetchMusicRequest());
-    navigate('/')
-  },100)
+    dispatch(fetchTotalRequest());
+    dispatch(musicAddedEnd());
+   
+   /*  navigate('/') */
+  },1000)
+   setTimeout(()=>{
+   navigate('/') 
+  },1500)
+
   }
     
   
@@ -113,7 +66,8 @@ const navigate = useNavigate()
 
   return (
     <div>
-      <section className="container">
+   {newMusic && <AddedSuccesfully />}
+      <Container>
         <form onSubmit={handleSubmit} className="form" encType='multipart/form-data'>
           <div className="input-box">
             <input type="text" onChange={(e) => setTitle(e.target.value)} name='title'  placeholder="Title" autoFocus />
@@ -146,7 +100,7 @@ const navigate = useNavigate()
             </div>
           </div>
         </form>
-      </section>
+      </Container>
     </div>
   );
 };
