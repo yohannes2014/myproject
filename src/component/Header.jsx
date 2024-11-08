@@ -15,7 +15,7 @@ const navigate = useNavigate()
  navigate('/AddNew')
   }
 
-  const Home = () =>{
+  const Home = () =>{  
     navigate('/');
     setIsOpen(!isOpen);
   }
