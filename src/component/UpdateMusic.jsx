@@ -73,9 +73,6 @@ const UpdateMusic = () => {
     
   };
 
- 
-  
-
   return (
     <div>
     {updated &&  <UpdatedSuccessfully />}

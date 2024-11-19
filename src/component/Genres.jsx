@@ -71,7 +71,6 @@ const handlePlay = (e) =>{
             <DiscSpan>Genres : {item.genres}</DiscSpan>
             <DiscSpan>Title : {item.title}</DiscSpan>
             <Detail>Artist : {item.artist}</Detail>
-
           </ListDiscrip>
           </ListItem>
         ))}

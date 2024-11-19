@@ -22,18 +22,26 @@ export interface Album {
 
 export interface Artist {
   _id: string;
-  name: string;
+  artist: string;
+  coverImageUrl: string;
+  songs: Music[];
+}
+
+export interface Genres {
+  _id: string;
+  genres: string;
   artist: string;
   coverImageUrl: string;
   songs: Music[];
 }
 
 
-
 export interface RootState {
   musics: {
     albums: Album[];
     artist: Artist[];
+    genres: Genres[];
+    musics:Music[];
   
   };
 }

@@ -1,4 +1,3 @@
-
 import { useSelector } from 'react-redux';
 import { Sub } from '../styled/Header.Styles';
 
@@ -9,8 +8,6 @@ const SubHeader = () => {
     const totalMusicItem = useSelector((state)=>state.musics.totalItem) 
 // this is filter to avoid spechal chracters 
     const filteredName = decodeURIComponent(routeName);
-
- 
   return (
     <Sub className='sub'>
       <p>Number of {filteredName} {totalMusicItem}</p>
