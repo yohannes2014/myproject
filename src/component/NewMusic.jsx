@@ -1,21 +1,16 @@
 
 import {addMusicRequest, fetchMusicRequest, fetchTotalRequest, musicAddedEnd, musicAddedSucce} from '../features/musicsSlice'
 import { useDispatch, useSelector } from 'react-redux';
-import { useState } from 'react';
 import { defaultImage } from '../api/musicApi';
 import { useNavigate } from 'react-router-dom';
 import { Cancel, Container, File, Submit } from '../styled/Form.styles';
 import { AddedSuccesfully } from "./Notification";
+import { useNewMusic } from '../hooks/useMusic';
 
 const NewMusic = () => {
   const dispatch = useDispatch();
-  const newMusic = useSelector((state)=>state.musics.musicAdded)
-  const [title, setTitle] = useState('');
-  const [artist, setArtist] = useState('');
-  const [album, setAlbum] = useState('');
-  const [genres, setGenres] = useState('');
-  const [image, setImage] = useState('');
-  const [audio, setAudio] = useState('');
+  const newMusic = useSelector((state)=>state.musics.musicAdded);
+  const  {title, setTitle, artist, setArtist, album, setAlbum, genres, setGenres, image, setImage, audio, setAudio} = useNewMusic()
 
  
 
@@ -48,7 +43,7 @@ const NewMusic = () => {
     dispatch(fetchTotalRequest());
     dispatch(musicAddedEnd());
    
-   /*  navigate('/') */
+  
   },1000)
    setTimeout(()=>{
    navigate('/') 

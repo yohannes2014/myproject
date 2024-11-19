@@ -1,13 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  musics: [],
-  isPlaying: false,
+  musics:[],
+  isPlaying:false,
   musicPlayer: true,
   routeName:'',
   
 
 };
+
 
 const musicPlayerSlice = createSlice({
   name: 'music',
