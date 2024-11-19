@@ -1,20 +1,27 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom';
-import { AlbumCont, AlbumHeader, Detail, DiscTitle, HeroSection, ListAlbum, ListDiscrip, ListofMusic } from './styled/Album.styles';
+import { AlbumCont, AlbumHeader, Detail, DiscTitle, HeroSection, ListAlbum, ListDiscrip, ListofMusic } from '../styled/Album.styles';
 import { setMusicPlay } from '../features/musicPlayerSlice';
+import { RootState, Music } from '../types/musicTypes';
 
-const ArtistList = () => {
-const {artist} = useParams();
+const ArtistList: React.FC = () => {
+const {artist} = useParams<{ artist :string}>();
+
+
 const dispatch = useDispatch()
 
-const music = useSelector(state => state.musics.artist.find(music => music._id === artist))
 
-const handlePlay = (e) =>{
- dispatch(setMusicPlay(e))
+const artistMusics = useSelector((state: RootState) => state.musics.artist.find(music => music._id === artist));
+
+const handlePlay = (music: Music) => {
+  dispatch(setMusicPlay(music));
 }
 
-const track = music.songs;
+if (!artistMusics) {
+  return <div>Album not found</div>;
+}
+const track = artistMusics.songs;
 
   return (
     <HeroSection>
@@ -22,7 +29,9 @@ const track = music.songs;
       <AlbumHeader>
         <div className='AlbumPhoto'></div>
         <div>
-          <h3>{music._id}</h3>
+         {/*  <h3>{track}</h3> */}
+          console.log(track);
+          
         </div>
       </AlbumHeader>
       <ListofMusic>

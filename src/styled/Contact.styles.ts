@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import theme from "../../theme/themes";
+import theme from "../theme/themes";
 
 
 export const ContactContainer = styled.div`

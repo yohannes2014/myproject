@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import SubHeader from './SubHeader';
-import { AddNew, Container, H4, Logo, Nav, Navigation, NavLink, AftBtn, CenBtn, NavBtn, BefOpn} from './styled/Header.Styles';
+import { AddNew, Container, H4, Logo, Nav, Navigation, NavLink, AftBtn, CenBtn, NavBtn, BefOpn} from '../styled/Header.Styles';
 
 
 
@@ -17,7 +17,7 @@ const navigate = useNavigate()
 
   const Home = () =>{  
     navigate('/');
-    setIsOpen(!isOpen);
+    setIsOpen(!isOpen);   
   }
   const Genres = () =>{
     navigate('/Genres')

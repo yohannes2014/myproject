@@ -1,10 +1,10 @@
-import "./Addnew.css";
+
 import {addMusicRequest, fetchMusicRequest, fetchTotalRequest, musicAddedEnd, musicAddedSucce} from '../features/musicsSlice'
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { defaultImage } from '../api/musicApi';
 import { useNavigate } from 'react-router-dom';
-import { Cancel, Container, File, Submit } from './styled/Form.styles';
+import { Cancel, Container, File, Submit } from '../styled/Form.styles';
 import { AddedSuccesfully } from "./Notification";
 
 const NewMusic = () => {

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { RiDeleteBin6Line, FaRegEdit, FaPlayCircle } from '../icons/index'; 
 import { findMuiscById, setRemoveCard, totalMUsicItem} from "../features/musicsSlice";
 import { setMusicPlay } from "../features/musicPlayerSlice";
-import { Card, Mycard, Discription, Music, MyBtns, Edit, Delete, Overlay, PlayCard} from "./styled/MusicCard.styles";
+import { Card, Mycard, Discription, Music, MyBtns, Edit, Delete, Overlay, PlayCard} from "../styled/MusicCard.styles";
 import { useEffect } from "react";
 import { imageUrl } from "../api/musicApi";
 import {  Warnning } from "./Notification";

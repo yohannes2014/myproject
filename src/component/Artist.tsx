@@ -1,16 +1,17 @@
 
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { Detail, DiscSpan, HeroSection, ImageList, ListAlbum, ListDiscrip } from './styled/Album.styles';
+import { Detail, DiscSpan, HeroSection, ImageList, ListAlbum, ListDiscrip } from '../styled/Album.styles';
 import { useEffect } from 'react';
 import { totalMUsicItem } from '../features/musicsSlice';
 import { imageUrl } from '../api/musicApi';
+import { RootState } from '../types/musicTypes'; 
 const Artist = () => {
 
-const artist = useSelector((state) => state.musics.artist);
+const artist = useSelector((state:RootState) => state.musics.artist);
 const navigate = useNavigate()
 const dispatch = useDispatch()
-const handleArtist = (e) => {
+const handleArtist = (e:string) => {
 
   navigate(`/Artist/${e}`);
  

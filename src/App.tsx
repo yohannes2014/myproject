@@ -12,48 +12,38 @@ import { useLocation } from 'react-router-dom';
 import { ThemeProvider } from '@emotion/react';
 import theme from './theme/themes';
 
-const App = () => {
 
-
-
-
+const App: React.FC = () => {
+  
   const Main = styled.div`
-        max-width:1300px; 
-       margin:auto;
+       max-width:1300px; 
+       margin:auto; 
        min-height:64vh;
-
     `;
-  const dispatch = useDispatch();
-  ;
-  const location = useLocation();
 
-  useEffect(() => {
-    const routeName = location.pathname.split('/').pop() || 'Songs';
+const dispatch = useDispatch();
+  
+const location = useLocation();
 
-
-
-
-    dispatch(setRouteName(routeName));
-  }, [location, dispatch]);
+useEffect(() => {
+  const routeName = location.pathname.split('/').pop() || 'Songs';
+  dispatch(setRouteName(routeName));
+}, [location, dispatch]);
 
 
+const fetchMusic = () => {
+  dispatch(fetchMusicRequest())
+  dispatch(fetchTotalRequest())
+  dispatch(fetchAlbumsRequest())
+  dispatch(fetchArtistsRequest())
+  dispatch(fetchGenresRequest())
+}
 
-  const fetchMusic = () => {
-    dispatch(fetchMusicRequest())
-    dispatch(fetchTotalRequest())
-    dispatch(fetchAlbumsRequest())
-    dispatch(fetchArtistsRequest())
-    dispatch(fetchGenresRequest())
-    
-
-  }
-
-
-  useEffect(fetchMusic)
+fetchMusic();
 
   return (
     <>
-      <ThemeProvider theme={theme} >
+     <ThemeProvider theme={theme} >
         <Contact />
           <Header />
         <Main>
@@ -61,11 +51,11 @@ const App = () => {
         </Main>
         <AudioPlayer /> 
       </ThemeProvider>
+      
     </>
-  );
+  )
 }
 
-export default App;
-
+export default App
 
 

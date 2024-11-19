@@ -1,6 +1,6 @@
-import { ContactContainer, Link } from "./styled/Contact.styles"
+import { ContactContainer, Link } from "../styled/Contact.styles"
 
-const Contact = () => {
+const Contact: React.FC = () => {
  
   return (
     <ContactContainer>

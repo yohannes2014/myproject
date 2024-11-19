@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { GenresHeader, Detail, DiscSpan, HeroSection, ListDiscrip, ListItem, Button } from './styled/Album.styles';
+import { GenresHeader, Detail, DiscSpan, HeroSection, ListDiscrip, ListItem, Button } from '../styled/Album.styles';
 import { setMusicPlay } from '../features/musicPlayerSlice';
 import { totalMUsicItem } from '../features/musicsSlice';
-
 const Genres = () => {
 
   const genres = useSelector((state) => state.musics.genres);

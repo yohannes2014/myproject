@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import MusicCard from '../component/MusicCard';
 
-const Home = () => {
+const Home: React.FC = () => {
   const Mycard = styled.div`
   display: flex;
   flex-wrap: wrap;

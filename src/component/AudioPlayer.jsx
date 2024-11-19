@@ -1,15 +1,16 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { closePlayer } from '../features/musicPlayerSlice';
-import { AiFillCloseSquare, FaCirclePause, VscUnmute, FaPlayCircle, IoVolumeMuteOutline } from '../icons/';
+import { AiFillCloseSquare, FaCirclePause, VscUnmute, FaPlayCircle, IoVolumeMuteOutline } from '../icons';
 import { imageUrl, audioUrl } from '../api/musicApi';
+import { useMusicPlayer } from '../hooks/useMusicPlayer';
 
 const AudioPlayer = () => {
-  const [isPlaying, setIsPlaying] = useState(true);
-  const [volume, setVolume] = useState(0.5);
-  const [isMuted, setIsMuted] = useState(false);
-  const [duration, setDuration] = useState(0);
-  const [currentTime, setCurrentTime] = useState(0);
+
+
+
+  const {currentTime, setCurrentTime, duration, setDuration, isMuted, setIsMuted, volume, setVolume, isPlaying, setIsPlaying} = useMusicPlayer()
+  
 
   const dispatch = useDispatch();
   const music = useSelector((state) => state.musicPlayer.musics);
@@ -80,7 +81,7 @@ const AudioPlayer = () => {
         audioElement.removeEventListener('loadeddata', handleLoaded);
       }
     };
-  }, [volume]);
+  }, [volume, setCurrentTime, setDuration]);
 
   const formatDuration = (durationSeconds) => {
     const minutes = Math.floor(durationSeconds / 60);

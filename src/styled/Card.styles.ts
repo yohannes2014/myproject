@@ -30,12 +30,6 @@ export const MusicCover = styled.div`
 `;
 
 
-/* .myImage
-{
-    width: 200px;
-    height: 160px;
-    border-bottom: solid 1px blue;
-} */
 
 export const Myimage = styled.img`
   width: 200px;

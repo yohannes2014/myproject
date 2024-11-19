@@ -1,7 +1,11 @@
 import styled from "@emotion/styled";
-import theme from "../../theme/themes";
+import theme from "../theme/themes";
 
 
+interface ButtonProps {
+    selected?: boolean; 
+  }
+  
 
 export const HeroSection = styled.div`
     margin:100px auto;
@@ -110,7 +114,7 @@ export const ListAlbum = styled.div`
     }
 `;
 
-export const Button = styled.button`
+export const Button = styled.button<ButtonProps>`
     padding:5px 10px;
     margin:5px;
     cursor: pointer;

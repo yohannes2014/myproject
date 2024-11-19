@@ -1,6 +1,6 @@
 
 import { useSelector } from 'react-redux';
-import { Sub } from './styled/Header.Styles';
+import { Sub } from '../styled/Header.Styles';
 
 const SubHeader = () => {
 

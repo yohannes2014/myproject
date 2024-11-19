@@ -1,9 +1,8 @@
-import "./Addnew.css";
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { fetchMusicRequest, musicUpdateEnd, musicUpdateSucce, updateMusicRequest } from '../features/musicsSlice';
-import { Cancel, Container, FileUpdate, MyImages, Submit } from "./styled/Form.styles";
+import { Cancel, Container, FileUpdate, MyImages, Submit } from "../styled/Form.styles";
 import { UpdatedSuccessfully } from "./Notification";
 import { imageUrl } from "../api/musicApi";
 

@@ -7,6 +7,7 @@ import Artist from "../component/Artist";
 import UpdateMusic from "../component/UpdateMusic";
 import AlbumList from "../component/AlbumList";
 import ArtistList from "../component/ArtistList";
+import Page404 from "../Page/Page404";
 
 const AllRoutes = () => {
   return (
@@ -21,6 +22,7 @@ const AllRoutes = () => {
     <Route path="/AddNew" element={<NewMusic />} />
     <Route path="/Update/:id" element={<UpdateMusic />} />
     <Route path="/Artist" element={<Artist />} />
+    <Route path="*" element={<Page404 />}  />
   </Routes>
     </>
   )
