@@ -1,32 +1,60 @@
-import React, { useEffect, useRef} from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { closePlayer } from '../features/musicPlayerSlice';
 import { AiFillCloseSquare, FaCirclePause, VscUnmute, FaPlayCircle, IoVolumeMuteOutline } from '../icons';
 import { imageUrl, audioUrl } from '../api/musicApi';
 import { useMusicPlayer } from '../hooks/useMusicPlayer';
-
-const AudioPlayer = () => {
-
+import {  RootState } from "../types/musicTypes";
 
 
-  const {currentTime, setCurrentTime, duration, setDuration, isMuted, setIsMuted, volume, setVolume, isPlaying, setIsPlaying} = useMusicPlayer()
-  
+
+const AudioPlayer: React.FC = () => {
+  // Destructure the values from the custom hook
+  const {
+    currentTime,
+    setCurrentTime,
+    duration,
+    setDuration,
+    isMuted,
+    setIsMuted,
+    volume,
+    setVolume,
+    isPlaying,
+    setIsPlaying,             
+  } = useMusicPlayer();
+
+
+
+   const musicUrl = useSelector((state: RootState) => state.musicPlayer.musics[0]);
+
+
+
+
 
   const dispatch = useDispatch();
-  const music = useSelector((state) => state.musicPlayer.musics);
-  const musicPlayer = useSelector((state) => state.musicPlayer.musicPlayer);
 
-  const audioRef = useRef();
-  const myMusic = `${audioUrl}/${music.audio}`;
-  const myImage = `${imageUrl}/${music.image}`;
 
+/* const music = useSelector((state:RootState)=> state.musicPlayer.musics)
+const setClose = useSelector((state:RootState)=> state.musicPlayer.musicPlayer)
+const setPlay = useSelector((state:RootState)=> state.musicPlayer.isPlaying) */
+
+
+  // Refs for audio element
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const myMusic = `${audioUrl}/${musicUrl.audio}`;
+  const myImage = `${imageUrl}/${musicUrl.image}`;  
+
+  
+
+
+  // Play and pause music
   const playMusic = () => {
-    audioRef.current.play();
+    audioRef.current?.play();
     setIsPlaying(true);
   };
 
   const pauseMusic = () => {
-    audioRef.current.pause();
+    audioRef.current?.pause();
     setIsPlaying(false);
   };
 
@@ -34,26 +62,33 @@ const AudioPlayer = () => {
     isPlaying ? pauseMusic() : playMusic();
   };
 
+  // Toggle mute state
   const toggleMute = () => {
     if (isMuted) {
       setIsMuted(false);
-      audioRef.current.volume = volume; // Restore previous volume
+      if (audioRef.current) audioRef.current.volume = volume; 
     } else {
       setIsMuted(true);
-      audioRef.current.volume = 0; // Mute
+      if (audioRef.current) audioRef.current.volume = 0; 
     }
   };
 
-  const handleSeek = (e) => {
+  // Handle seeking through the audio
+  const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
     const seekTime = parseFloat(e.target.value);
-    audioRef.current.currentTime = seekTime;
+    if (audioRef.current) {
+      audioRef.current.currentTime = seekTime;
+    }
     setCurrentTime(seekTime);
   };
 
-  const handleVolume = (e) => {
+  // Handle volume changes
+  const handleVolume = (e: React.ChangeEvent<HTMLInputElement>) => {
     const adjustVolume = parseFloat(e.target.value);
     const clampedVolume = Math.min(Math.max(adjustVolume, 0), 1);
-    audioRef.current.volume = clampedVolume;
+    if (audioRef.current) {
+      audioRef.current.volume = clampedVolume;
+    }
     setVolume(clampedVolume);
   };
 
@@ -61,12 +96,14 @@ const AudioPlayer = () => {
     const audioElement = audioRef.current; // Capture the current ref value
 
     const handleTimeUpdate = () => {
-      setCurrentTime(audioElement.currentTime);
+      if (audioElement) setCurrentTime(audioElement.currentTime);
     };
 
     const handleLoaded = () => {
-      setDuration(audioElement.duration);
-      audioElement.volume = volume; // Set initial volume
+      if (audioElement) {
+        setDuration(audioElement.duration);
+        audioElement.volume = volume; // Set initial volume
+      }
     };
 
     if (audioElement) {
@@ -83,27 +120,30 @@ const AudioPlayer = () => {
     };
   }, [volume, setCurrentTime, setDuration]);
 
-  const formatDuration = (durationSeconds) => {
+  // Format the time duration
+  const formatDuration = (durationSeconds: number) => {
     const minutes = Math.floor(durationSeconds / 60);
     const seconds = Math.floor(durationSeconds % 60);
-    const formattedSeconds = seconds.toString().padStart(2, "0");  //second digit
+    const formattedSeconds = seconds.toString().padStart(2, '0'); // second digit
     return `${minutes} : ${formattedSeconds}`;
   };
 
+  // Close the music player
   const closeBtn = () => {
     dispatch(closePlayer());
   };
 
+ 
   return (
-    <div className={`playerContainer ${musicPlayer ? 'hiddenPlayer' : ''}`}>
+    <div className={`playerContainer`}>
       <audio ref={audioRef} src={myMusic} autoPlay />
       <div className='musicDiscri'>
         <div className='musicImage'>
           <img src={myImage} alt='cover' className='audioCover' />
         </div>
         <div>
-          <p>Title: <b>{music.title}</b></p>
-          <p>Artist: <b>{music.artist}</b></p>
+          <p>Title: <b>{musicUrl.title}</b></p>
+          <p>Artist: <b>{musicUrl.artist}</b></p>
         </div>
       </div>
       <div className='musicPlay'>
@@ -147,3 +187,20 @@ const AudioPlayer = () => {
 };
 
 export default AudioPlayer;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

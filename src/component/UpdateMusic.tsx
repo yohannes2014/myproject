@@ -5,23 +5,32 @@ import { fetchMusicRequest, musicUpdateEnd, musicUpdateSucce, updateMusicRequest
 import { Cancel, Container, FileUpdate, MyImages, Submit } from "../styled/Form.styles";
 import { UpdatedSuccessfully } from "./Notification";
 import { imageUrl } from "../api/musicApi";
+import { RootState,  Musics } from "../types/musicTypes";
+
+
+
+
+
+
+
 
 const UpdateMusic = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { id } = useParams();
+  const { id } = useParams<string>();
 
-  const music = useSelector(state => state.musics.musics.find(music => music._id === id));
-  const updated = useSelector((state)=>state.musics.musicUpdate)
+  const music = useSelector((state:RootState) => state.musics.musics.find((music:Musics) => music._id === id));
+  const updated = useSelector((state:any)=>state.musics.musicUpdate)
 
 
 
-  const [title, setTitle] = useState(music.title);
-  const [artist, setArtist] = useState(music.artist);
-  const [album, setAlbum] = useState(music.album);
-  const [genres, setGenres] = useState(music.genres);
-  const [image, setImage] = useState(music.image);
-  const [imagePreview, setImagePreview] = useState(`${imageUrl}/${music.image}`); 
+  const [title, setTitle] = useState(music?.title);
+  const [artist, setArtist] = useState(music?.artist);
+  const [album, setAlbum] = useState(music?.album);
+  const [genres, setGenres] = useState(music?.genres);
+  const [image, setImage] = useState<File | string | null>(null);
+
+  const [imagePreview, setImagePreview] = useState( `${imageUrl}/${music?.image}`); 
 
   useEffect(() => {
     if (image && image instanceof File) {
@@ -30,7 +39,7 @@ const UpdateMusic = () => {
   }, [image]);
 
   
-  const handleImage = (e) =>{
+  const handleImage = (e:any) =>{
   
     const selectedImage = e.target.files[0];
     setImage(selectedImage); 
@@ -39,7 +48,7 @@ const UpdateMusic = () => {
   }
 
 
-  const handleUpdate = (e) => {
+  const handleUpdate = (e:any) => {
     e.preventDefault();
 
  const updatedMusic = {

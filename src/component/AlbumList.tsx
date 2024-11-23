@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import { AlbumCont, AlbumHeader, DiscTitle, HeroSection, ListDiscrip, ListAlbum, ListofMusic, Detail } from '../styled/Album.styles'
 import { useDispatch, useSelector } from 'react-redux';
 import { setMusicPlay } from '../features/musicPlayerSlice';
-import { RootState, Music } from '../types/musicTypes'; 
+import { RootState, musicPlayer} from '../types/musicTypes'; 
 
 const AlbumList: React.FC = () => {
 
@@ -18,7 +18,7 @@ const AlbumList: React.FC = () => {
 
   const albumList = albumMusics.songs;
 
-  const handlePlay = (music: Music) => {
+  const handlePlay = (music:musicPlayer) => {
     dispatch(setMusicPlay(music));
   }
 
@@ -34,11 +34,11 @@ const AlbumList: React.FC = () => {
         </AlbumHeader>
         <ListofMusic>
         {albumList.map((music)=>(
-        <ListAlbum key={music._id} onClick={()=>handlePlay(music)}>
+        <ListAlbum key={music._id}  onClick={()=>handlePlay({ musics:[music], setPlay:true, setPlayer:false })}   >
         <ListDiscrip>
           <DiscTitle>{music.title}</DiscTitle>
           <Detail>Duration : 04:44</Detail>
-        </ListDiscrip>
+        </ListDiscrip>                 
         </ListAlbum>
       ))}
         </ListofMusic>

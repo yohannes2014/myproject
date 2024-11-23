@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import Contact from './component/Contact';
 import AllRoutes from './routes/routes';
 import { useDispatch } from 'react-redux';
-import { setRouteName } from './features/musicPlayerSlice';
+import { setRouteName } from './features/locationSlice';
 import { fetchMusicRequest, fetchTotalRequest, fetchAlbumsRequest, fetchGenresRequest, fetchArtistsRequest } from './features/musicsSlice';
 import { useEffect } from 'react';
 import AudioPlayer from './component/AudioPlayer';
@@ -49,7 +49,7 @@ fetchMusic();
         <Main>
           <AllRoutes />
         </Main>
-        <AudioPlayer /> 
+       <AudioPlayer />
       </ThemeProvider>
       
     </>
