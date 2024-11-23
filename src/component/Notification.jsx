@@ -1,4 +1,3 @@
-
 import { cancelRemoveCard, deleteMusicRequest, fetchTotalRequest } from '../features/musicsSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -9,21 +8,18 @@ import {
    SuccessNotification
 } from "../styled/Notification.styles";
 
-
-
 export const Warnning = () => {
    const music = useSelector((state) => state.musics.currentMusic)
    const dispatch = useDispatch();
 
    const warningConfirm = () => {
-
       dispatch(fetchTotalRequest());
       dispatch(deleteMusicRequest(music._id))
       dispatch(fetchTotalRequest());
       dispatch(cancelRemoveCard());
    }
 
-   
+
    const warningCancel = () => {
       dispatch(cancelRemoveCard())
    }
@@ -56,11 +52,3 @@ export const UpdatedSuccessfully = () => {
       </SuccessNotification>
    )
 }
-
-
-
-
-
-
-
-
