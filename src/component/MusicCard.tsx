@@ -11,15 +11,10 @@ import { RootState, Musics} from "../types/musicTypes"
 
 const MusicCard: React.FC = () => {
 
-
   const dispatch = useDispatch();
   const musics = useSelector((state: RootState) => state.musics.musics); 
   const warning = useSelector((state: RootState) => state.musics.removeMusic);
   const navigate = useNavigate();
-
-
-
-
   const total = musics.length;
 
   useEffect(() => {
@@ -32,15 +27,11 @@ const MusicCard: React.FC = () => {
   };
 
   const handlePlay = (music:Musics) => {
-  
- 
     dispatch(setMusicPlay({
-      musics: [music],  // Passing the music as an array
-      setPlay: true,    // Start playing
-      setPlayer: true,  // Set the player to visible
+      musics: [music],  
+      setPlay: true,    
+      setPlayer: true,  
     }));
-
-
   };
 
   const editHandler = (music :Musics) => {

@@ -13,6 +13,16 @@ export interface Musics {
   duration: string;
 }
 
+export interface newMusic {
+
+  title: string;
+  artist: string;
+  album: string;
+  genres: string;
+  image: string;
+  audio: string;
+}
+
 export interface Album {
   _id: string;
   artist: string;
@@ -44,6 +54,7 @@ export interface RootState {
     artist: Artist[];
     genres: Genres[];
     musics:Musics[];
+    newMusic:newMusic[];
     currentMusic: Musics | null;
     removeMusic: boolean;
  

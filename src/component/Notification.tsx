@@ -9,9 +9,6 @@ import {
 } from "../styled/Notification.styles";
 import { RootState } from '../types/musicTypes';
 
-// Define the types for Redux state and the music item
-/* const music = useSelector((state: RootState) => state.musics); */
-
 
 export const Warnning: React.FC = () => {
   const music = useSelector((state: RootState) => state.musics.currentMusic);

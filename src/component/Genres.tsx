@@ -5,13 +5,12 @@ import { setMusicPlay } from '../features/musicPlayerSlice';
 import { totalMUsicItem } from '../features/musicsSlice';
 import { RootState, musicPlayer , Musics } from '../types/musicTypes';
 
-
-
 const Genres: React.FC = () => {
+  
   const genres = useSelector((state: RootState) => state.musics.genres);
   const myMusic = useSelector((state: RootState) => state.musics.musics);
-  const [selectGenres, setSelectGenres] = useState<string[]>([]);  // Type as an array of strings
-  const [filteredMusic, setFilteredMusic] = useState<Musics[]>(myMusic);  // Type as an array of Music objects
+  const [selectGenres, setSelectGenres] = useState<string[]>([]);  
+  const [filteredMusic, setFilteredMusic] = useState<Musics[]>(myMusic);  
   const dispatch = useDispatch();
 
   let total = genres.length;
@@ -61,7 +60,6 @@ const Genres: React.FC = () => {
             </div>
           ))}
         </GenresHeader>
-
         {filteredMusic.map((music) => (
           <ListItem key={music._id}  onClick={()=>handlePlay({ setPlay: true, musics:[music] , setPlayer:false })}  >
             <ListDiscrip>

@@ -7,22 +7,14 @@ import { UpdatedSuccessfully } from "./Notification";
 import { imageUrl } from "../api/musicApi";
 import { RootState,  Musics } from "../types/musicTypes";
 
-
-
-
-
-
-
-
 const UpdateMusic = () => {
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { id } = useParams<string>();
 
   const music = useSelector((state:RootState) => state.musics.musics.find((music:Musics) => music._id === id));
-  const updated = useSelector((state:any)=>state.musics.musicUpdate)
-
-
+  const updated = useSelector((state:any)=>state.musics.musicUpdate);
 
   const [title, setTitle] = useState(music?.title);
   const [artist, setArtist] = useState(music?.artist);
@@ -44,7 +36,6 @@ const UpdateMusic = () => {
     const selectedImage = e.target.files[0];
     setImage(selectedImage); 
 
-  
   }
 
 
@@ -79,7 +70,6 @@ const UpdateMusic = () => {
   const handleCancel = () => {
  
       navigate('/');
-    
   };
 
   return (

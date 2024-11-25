@@ -6,7 +6,7 @@ import { AddNew, Container, H4, Logo, Nav, Navigation, NavLink, AftBtn, CenBtn, 
 
 // Define types for your Redux state (RootState)
 interface RootState {
-  musics: {
+  musics: { 
     total: number;
   };
 }

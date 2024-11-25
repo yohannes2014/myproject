@@ -6,46 +6,42 @@ import { setMusicPlay } from '../features/musicPlayerSlice';
 import { RootState, musicPlayer } from '../types/musicTypes';
 
 const ArtistList: React.FC = () => {
-const {artist} = useParams<{ artist :string}>();
+  
+  const { artist } = useParams<{ artist: string }>();
 
+  const dispatch = useDispatch();
 
-const dispatch = useDispatch()
+  const artistMusics = useSelector((state: RootState) => state.musics.artist.find(music => music._id === artist));
 
+  const handlePlay = (music: musicPlayer) => {
+    dispatch(setMusicPlay(music));
+  }
 
-const artistMusics = useSelector((state: RootState) => state.musics.artist.find(music => music._id === artist));
-
-const handlePlay = (music: musicPlayer) => {
-  dispatch(setMusicPlay(music));
-}
-
-if (!artistMusics) {
-  return <div>Album not found</div>;
-}
-const track = artistMusics.songs;
+  if (!artistMusics) {
+    return <div>Album not found</div>;
+  }
+  const track = artistMusics.songs;
 
   return (
     <HeroSection>
-    <AlbumCont>
-      <AlbumHeader>
-        <div className='AlbumPhoto'></div>
-        <div>
-         {/*  <h3>{track}</h3> */}
-       
-          
-        </div>
-      </AlbumHeader>
-      <ListofMusic>
-      {track.map((music, id)=>(
-      <ListAlbum key={id}  onClick={()=>handlePlay({ setPlay: true, musics:[music], setPlayer:false })}  >
-      <ListDiscrip>
-        <DiscTitle>{music.title}</DiscTitle>
-        <Detail>Album : {music.album}</Detail>
-      </ListDiscrip>
-      </ListAlbum>
-    ))}
-      </ListofMusic>
-    </AlbumCont>
-  </HeroSection>
+      <AlbumCont>
+        <AlbumHeader>
+          <div className='AlbumPhoto'></div>
+          <div>
+          </div>
+        </AlbumHeader>
+        <ListofMusic>
+          {track.map((music, id) => (
+            <ListAlbum key={id} onClick={() => handlePlay({ setPlay: true, musics: [music], setPlayer: false })}  >
+              <ListDiscrip>
+                <DiscTitle>{music.title}</DiscTitle>
+                <Detail>Album : {music.album}</Detail>
+              </ListDiscrip>
+            </ListAlbum>
+          ))}
+        </ListofMusic>
+      </AlbumCont>
+    </HeroSection>
   )
 }
 

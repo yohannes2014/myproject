@@ -1,24 +1,16 @@
 
 import {addMusicRequest, fetchMusicRequest, fetchTotalRequest, musicAddedEnd, musicAddedSucce} from '../features/musicsSlice'
 import { useDispatch, useSelector } from 'react-redux';
-import { useState } from 'react';
 import { defaultImage } from '../api/musicApi';
 import { useNavigate } from 'react-router-dom';
 import { Cancel, Container, File, Submit } from '../styled/Form.styles';
 import { AddedSuccesfully } from "./Notification";
-import { useNewMusic } from '../hooks/useMusic';
+import { useMusic } from '../hooks/useMusic';
 
 const NewMusic = () => {
   const dispatch = useDispatch();
   const newMusic = useSelector((state)=>state.musics.musicAdded)
-  const [title, setTitle] = useState('');
-  const [artist, setArtist] = useState('');
-  const [album, setAlbum] = useState('');
-  const [genres, setGenres] = useState('');
-  const [image, setImage] = useState('');
-  const [audio, setAudio] = useState('');
-  
-
+  const { title, setTitle, artist, setArtist, album, setAlbum, genres, setGenres, image, setImage, audio, setAudio } = useMusic()
  
 
   const handleSubmit = (e) => {
@@ -40,9 +32,7 @@ const NewMusic = () => {
     
 
     dispatch(addMusicRequest(formData));
-    dispatch(musicAddedSucce())
-   
-
+    dispatch(musicAddedSucce());
     
    setTimeout(()=>{
   
@@ -50,16 +40,13 @@ const NewMusic = () => {
     dispatch(fetchTotalRequest());
     dispatch(musicAddedEnd());
    
-   /*  navigate('/') */
   },1000)
    setTimeout(()=>{
    navigate('/') 
   },1500)
 
   }
-    
   
-
   const handleCancel = () =>{
     navigate(('/'))
     }
