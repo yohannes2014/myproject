@@ -25,6 +25,12 @@ const theme = {
     contactHeight:['30px','29px'],
     contactWidth:['1250px', '1024px','990px', '850px', '750px', '650px', '480px', '390px','300px'],
 
+    listHeaderWidth:['1000px','950px', '850px', '750px', '650px', '480px', '390px','300px'],
+    listHeaderHeight:['100px','90px','80px','70px'],
+    
+    listPhotoWidth:['100px','90px','80px','70px'] ,
+    listPhotoHeight:['100px','90px','80px','70px'] ,
+
     contactFont:['20px','18.5px','16px','14.5px','12px','10.5px','9.5px'],
 
 

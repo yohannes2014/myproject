@@ -27,18 +27,9 @@ const AudioPlayer: React.FC = () => {
 
 
    const musicUrl = useSelector((state: RootState) => state.musicPlayer.musics[0]);
-
-
-const setPlayer = useSelector((state:RootState)=>state.musicPlayer.setPlayer)
-
-
-
+const setPlayer = useSelector((state:RootState)=>state.musicPlayer.setPlayer);
 
   const dispatch = useDispatch();
-
-
-
-
   // Refs for audio element
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const myMusic = `${audioUrl}/${musicUrl.audio}`;
@@ -128,12 +119,12 @@ const setPlayer = useSelector((state:RootState)=>state.musicPlayer.setPlayer)
     return `${minutes} : ${formattedSeconds}`;
   };
 
-  // Close the music player
+
   const closeBtn = () => {
     dispatch(closePlayer());
   };
+   
 
- 
   return (
     <PlayerContainer hidden={setPlayer} >
       <audio ref={audioRef} src={myMusic} autoPlay />

@@ -9,8 +9,9 @@ export interface Musics {
   genres: string;
   image: string;
   audio: string;
-  totalItem:number;
   duration: string;
+  totalItem: number;
+  
 }
 
 export interface newMusic {
@@ -57,12 +58,12 @@ export interface RootState {
     newMusic:newMusic[];
     currentMusic: Musics | null;
     removeMusic: boolean;
- 
   },
    musicPlayer: {
     musics:Musics[],
     setPlay:boolean,
     setPlayer:boolean,
+  
   },
   
  location: {
@@ -88,6 +89,7 @@ export interface MusicsState {
   removeMusic:boolean;
   musicAdded: boolean;
   musicUpdate: boolean;
+  duration:string;
 }
 
 export interface Music {
@@ -98,7 +100,7 @@ export interface Music {
   genres: string;
   image: string | null;
   audio: string | null;
-  duration: string;
+  duration:string
 }
 
 export interface musicPlayer {
@@ -112,11 +114,11 @@ export interface musicPlayer {
       image: string,
       audio: string,
       totalItem:number,
-      duration: string
     }
     ],
     setPlay: boolean,
     setPlayer: boolean,
+   
   }
 
 

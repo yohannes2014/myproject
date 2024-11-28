@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { totalMUsicItem } from '../features/musicsSlice';
 import { useEffect } from 'react';
-import { DiscSpan, HeroSection, ImageList, ListDiscrip, ListItem } from '../styled/Album.styles';
+import { DiscSpan, HeroSection, ImageList, ListDiscrip, ListItem, MusicCount } from '../styled/Album.styles';
 import { useNavigate } from 'react-router-dom';
 import { imageUrl } from '../api/musicApi';
 import { RootState } from '../types/musicTypes'; 
@@ -34,7 +34,7 @@ useEffect(()=>{
         <ListDiscrip>
           <DiscSpan>Album : {item._id}</DiscSpan>
           <DiscSpan>Artist : {item.songs[0].artist}</DiscSpan>
-          <DiscSpan>{item.songs.length} Songs</DiscSpan>
+          <MusicCount>{item.songs.length} Songs</MusicCount>
         </ListDiscrip>
         </ListItem>
       ))}

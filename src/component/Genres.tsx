@@ -42,7 +42,7 @@ const Genres: React.FC = () => {
 
   useEffect(() => {
     filterMusic();
-  }, [selectGenres]);
+  });
 
   const handlePlay = (music:musicPlayer) => {
     dispatch(setMusicPlay(music));
@@ -52,7 +52,7 @@ const Genres: React.FC = () => {
     <>
       <HeroSection>
         <GenresHeader>
-          {genres.map((item) => (
+          {genres.map((item) => ( 
             <div key={item._id}>
               <Button onClick={() => handleFilter(item._id)} selected={selectGenres.includes(item._id)}>
                 {item._id}

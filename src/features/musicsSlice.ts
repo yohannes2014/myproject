@@ -15,6 +15,7 @@ const initialState:MusicsState = {
   removeMusic: false,
   musicAdded: false,
   musicUpdate: false,
+  duration:'0:00',
   
 };
 
@@ -22,7 +23,6 @@ const musicSlice = createSlice({
   name: 'music',
   initialState,
   reducers: {
-    // Fetch Music
     fetchMusicRequest: (state) => {
       state.loading = true;
       state.error = null;
@@ -30,6 +30,7 @@ const musicSlice = createSlice({
     fetchMusicSuccess: (state, action: PayloadAction<Musics[]>) => {
       state.loading = false;
       state.musics = action.payload;
+     
     },
     fetchMusicFailure: (state, action ) => {
       state.loading = false;
@@ -48,7 +49,7 @@ const musicSlice = createSlice({
     },
     
     updateMusicRequest: (state, action: PayloadAction<any>) => {
-      // Optionally handle loading state for the update action
+      
       state.loading = true;
       state.error = null;
     },
@@ -57,7 +58,7 @@ const musicSlice = createSlice({
       state.musics = state.musics.map((music) =>
         music._id === updatedMusic.id ? updatedMusic : music
       );
-      state.musicUpdate = true; // Mark as updated
+      state.musicUpdate = true; 
       state.loading = false;
     },
     updateMusicFailure: (state, action: PayloadAction<string>) => {
@@ -163,6 +164,7 @@ const musicSlice = createSlice({
     musicUpdateEnd: (state) => {
       state.musicUpdate = false;
     },
+    
   },
 });
 

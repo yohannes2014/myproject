@@ -58,13 +58,13 @@ const UpdateMusic = () => {
 
     setTimeout(()=>{
    
-     
+      dispatch(fetchMusicRequest())
       dispatch(musicUpdateEnd())
-    },1000)
+    },1500)
     setTimeout(()=>{
    
       navigate('/')
-    },1500)
+    },1800)
   };
 
   const handleCancel = () => {

@@ -5,14 +5,15 @@ export const Notification = styled.div`
 width:100%;
 height:100%;
 position:fixed;
-margin:auto;
 display:flex;
 align-items:center;
 flex-direction:column;
-border-radius:10px;
 background-color: rgba(205, 209, 234, 0.3);
 backdrop-filter:blur(4px);
 z-index:100;
+top:0;
+left:0;
+right:0;
 `;
 
 export const CancelNotificationBtn = styled.button`

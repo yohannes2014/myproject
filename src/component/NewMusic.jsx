@@ -1,4 +1,4 @@
-import {addMusicRequest, fetchMusicRequest, fetchTotalRequest, musicAddedEnd, musicAddedSucce} from '../features/musicsSlice'
+import {addMusicRequest, fetchAlbumsRequest, fetchArtistsRequest, fetchGenresRequest, fetchMusicRequest, fetchTotalRequest, musicAddedEnd, musicAddedSucce} from '../features/musicsSlice'
 import { useDispatch, useSelector } from 'react-redux';
 import { defaultImage } from '../api/musicApi';
 import { useNavigate } from 'react-router-dom';
@@ -6,12 +6,34 @@ import { Cancel, Container, File, Submit } from '../styled/Form.styles';
 import { AddedSuccesfully } from "./Notification";
 import { useMusic } from '../hooks/useMusic';
 
+import { useState } from 'react';
+
 
 const NewMusic = () => {
   const dispatch = useDispatch();
   const newMusic = useSelector((state)=>state.musics.musicAdded)
-  const { title, setTitle, artist, setArtist, album, setAlbum, genres, setGenres, image, setImage, audio, setAudio } = useMusic()
- 
+  const { title, setTitle, artist, setArtist, album, setAlbum, genres, setGenres, image, setImage, audio, setAudio } = useMusic();
+
+  const [duration, setDuration] = useState('0 : 00'); 
+  const [musicTime, setMusicTime] = useState(0); 
+
+
+
+    
+    if (audio) {
+      const Music = new Audio(URL.createObjectURL(audio));
+      Music.onloadedmetadata = () => {
+
+        const musicDuration = Music.duration
+        setMusicTime(musicDuration); 
+        setDuration(`${Math.floor(musicTime / 60)}:${(`0` + Math.floor(musicTime % 60)).slice(-2)}`)
+        
+      };
+    }
+  
+
+
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -29,21 +51,25 @@ const NewMusic = () => {
     formData.append('genres', genres);
     formData.append('image', image || defaultImage);
     formData.append('audio', audio);
+    formData.append('duration', duration);
     
-
     dispatch(addMusicRequest(formData));
     dispatch(musicAddedSucce());
+   
     
    setTimeout(()=>{
-  
-    dispatch(fetchMusicRequest());
     dispatch(fetchTotalRequest());
-    dispatch(musicAddedEnd());
+     dispatch(fetchMusicRequest());
+     dispatch(fetchAlbumsRequest());
+     dispatch(fetchArtistsRequest())
+     dispatch(fetchGenresRequest())
    
-  },1000)
-   setTimeout(()=>{
-   navigate('/') 
   },1500)
+   setTimeout(()=>{
+   dispatch(fetchMusicRequest());
+   dispatch(musicAddedEnd());
+   navigate('/')
+  },2000)
 
   }
   
@@ -77,7 +103,7 @@ const navigate = useNavigate()
             </div>
             <div className="input-box">
               <File htmlFor='music'>Music File</File>
-              <input type="file" id='music' onChange={(e) => setAudio(e.target.files[0])} name='audio' accept='audio/*' hidden />
+              <input type="file" id='music' onChange={(e)=>setAudio(e.target.files[0])} name='audio' accept='audio/*' hidden />
             </div>
           </div>
           <div className="column">

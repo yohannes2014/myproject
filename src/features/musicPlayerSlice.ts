@@ -27,7 +27,7 @@ const musicPlayerSlice = createSlice({
     setMusicPlay(state, action: PayloadAction<musicPlayer>) {
       state.setPlay = action.payload.setPlay;
       state.setPlayer = false;
-      state.musics = action.payload.musics; 
+      state.musics = action.payload.musics;  
     },
 
     pauseSong(state) {
@@ -38,6 +38,7 @@ const musicPlayerSlice = createSlice({
       state.setPlayer = true; 
       state.musics = [myMusic]; 
     },
+
   },
 });
 

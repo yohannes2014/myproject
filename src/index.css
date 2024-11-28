@@ -233,14 +233,7 @@ transition: 0.3s ease-in-out;
   height: 100%;
   border-radius: 40%;
 }
-.AlbumPhoto{
-  background-color: orange;
-  width: 100px;
-  height: 100px;
-  border-radius: 15px;
-  margin-right: 20px;
 
-}
 
 .addBtn{
   font-weight: bold;

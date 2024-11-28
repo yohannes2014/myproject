@@ -49,6 +49,11 @@ export const DiscSpan = styled.div`
     color: rgb(2, 2, 58);
     width:300px;
 `;
+export const MusicCount = styled.div`
+    
+    color: rgb(2, 2, 58);
+    width:300px;
+`;
 export const Detail = styled.div`
 
     color: rgb(2, 2, 58);
@@ -57,7 +62,14 @@ export const DiscTitle = styled.div`
     font-weight: bold;
     font-size:25px;
     color: rgb(2, 2, 58);
-    width:600px;
+    width:${theme.listHeaderWidth[0]};
+
+    ${theme.breakpoints.map((bp, index) => `
+    @media (max-width: ${bp}) {
+      width: ${theme.listHeaderWidth[index + 1]};
+    
+    }
+  `)}
 `;
 
 export const AlbumCont = styled.div`
@@ -66,15 +78,59 @@ export const AlbumCont = styled.div`
 
 `;
 
-export const AlbumHeader = styled.div`
-    height:100px;
-    width:100%;
+export const ListHeader = styled.div`
+   
+    width:${theme.listHeaderWidth[0]};
     background-color:wheat;
     border-radius: 40px 0px 40px 0px;
     padding-left:50px;
-    margin-bottom:20px;
+    margin:10px auto;
     display:flex;
+
+
+
+    ${theme.breakpoints.map((bp, index) => `
+    @media (max-width: ${bp}) {
+      width: ${theme.listHeaderWidth[index + 1]};
+      height: ${theme.listHeaderHeight[index + 1]};
+    
+    }
+  `)}
+   
 `;
+export const AlbumPhoto = styled.div`
+ 
+    width: ${theme.listPhotoWidth[0]};
+    height: ${theme.listPhotoHeight[0]};
+    border-radius: 15px;
+    margin-right: 20px;
+
+    ${theme.breakpoints.map((bp, index) => `
+    @media (max-width: ${bp}) {
+      width: ${theme.listPhotoWidth[index + 1]};
+      height: ${theme.listPhotoHeight[index + 1]};
+    
+    }
+  `)}
+  `;
+
+  export const AlbumImage = styled.img`
+   width: ${theme.listPhotoWidth[0]};
+   height: ${theme.listPhotoHeight[0]};
+   border-radius:10px;
+   margin-top:2px;
+
+   ${theme.breakpoints.map((bp, index) => `
+    @media (max-width: ${bp}) {
+      width: ${theme.listPhotoWidth[index + 1]};
+      height: ${theme.listPhotoHeight[index + 1]};
+    
+    }
+  `)}
+
+  `;
+
+
 export const GenresHeader = styled.div`
 
     width:100%;

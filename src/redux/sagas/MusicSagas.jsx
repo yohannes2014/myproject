@@ -65,6 +65,7 @@ function* handleAddMusicSaga(action) {
   try {
     const response = yield call(addMusicApi, action.payload);
     yield put(addMusicSuccess(response.data));
+  
   } catch (error) {
     yield put(addMusicFailure(error.response ? error.response.data : error.message));
   }
@@ -136,7 +137,7 @@ function* fetchGenresSaga() {
 }
 
 function* watchMusicSagas() {
-  yield takeLatest( fetchMusicRequest, fetchMusicSaga);
+  yield takeLatest(fetchMusicRequest, fetchMusicSaga);
   yield takeLatest(addMusicRequest, handleAddMusicSaga);
   yield takeLatest(updateMusicRequest, updateMusicSaga);
   yield takeLatest(deleteMusicRequest, handleDeleteMusicSaga);

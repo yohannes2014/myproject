@@ -51,6 +51,7 @@ const MusicCard: React.FC = () => {
             <MyBtns>
               <Edit onClick={() => editHandler(music)} ><FaRegEdit /></Edit>
               <Delete onClick={() => handleDelete(music._id)}><RiDeleteBin6Line /></Delete>
+             
             </MyBtns>
           </Overlay>
           <Mycard>

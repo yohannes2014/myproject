@@ -1,5 +1,6 @@
 import { useMusicPlayer } from '../hooks/useMusicPlayer';
 
+
 export const handleTimeUpdate = (audioElement: HTMLAudioElement | null): void => {
   const { setCurrentTime } = useMusicPlayer();
 
@@ -8,3 +9,4 @@ export const handleTimeUpdate = (audioElement: HTMLAudioElement | null): void =>
     setCurrentTime(audioElement.currentTime);
   }
 };
+
