@@ -1,4 +1,3 @@
-
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { musicPlayer } from "../types/musicTypes";
 
@@ -14,8 +13,6 @@ totalItem:0,
 duration: ''
 }
 
-
-
 const initialState:musicPlayer = {
   musics:[myMusic], 
   setPlay:false,
@@ -29,27 +26,27 @@ const musicPlayerSlice = createSlice({
   reducers: {
     setMusicPlay(state, action: PayloadAction<musicPlayer>) {
       state.setPlay = action.payload.setPlay;
-      state.setPlayer = action.payload.setPlayer;
+      state.setPlayer = false;
       state.musics = action.payload.musics; 
     },
 
     pauseSong(state) {
-      state.setPlay = false; // Pause the song
+      state.setPlay = false; 
     },
 
     closePlayer(state) {
-      state.setPlayer = false; // Close the music player (set to false)
-      state.musics = [myMusic]; // Clear the current music
+      state.setPlayer = true; 
+      state.musics = [myMusic]; 
     },
   },
 });
 
-// Export the actions
+
 export const {
   pauseSong,
   closePlayer,
   setMusicPlay,
 } = musicPlayerSlice.actions;
 
-// Export the reducer
+
 export default musicPlayerSlice.reducer;

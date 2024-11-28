@@ -9,5 +9,5 @@ const Contact: React.FC = () => {
     </ContactContainer>
   )
 }
-
+ 
 export default Contact

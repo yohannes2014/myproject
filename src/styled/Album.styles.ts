@@ -6,16 +6,14 @@ interface ButtonProps {
     selected?: boolean; 
   }
   
-
 export const HeroSection = styled.div`
     margin:100px auto;
     width: 90%;
     padding: 10px;
-
 `;
 
 export const ListItem = styled.div`
-  width: 100%;
+   width: 100%;
     height: 80px;
     background-image: linear-gradient(45deg, rgb(211, 211, 249) , rgba(225, 221, 250, 0.712), rgb(255, 255, 255));
     border-radius: 10px;
@@ -28,12 +26,12 @@ export const ListItem = styled.div`
         box-shadow: 0px 0px 12px 1px rgba(16, 16, 215, 0.418);
     }
 `;
+
 export const ImageList = styled.div`
     width: 70px;
     height: 70px;
     border-radius: 10px;
     margin: 5px;
-    
 `;
 
 export const ListDiscrip = styled.div`
@@ -89,9 +87,7 @@ export const GenresHeader = styled.div`
     flex-direction: row;
     position: sticky;
     top: 150px;
-    z-index: 100px;
-   
-     
+    z-index: 100px;     
 `;
 
 export const ListofMusic = styled.div`

@@ -9,8 +9,8 @@ import { RootState } from '../types/musicTypes';
 const Albums: React.FC = () => {
 
   const albums = useSelector((state: RootState) => state.musics.albums);
-  const navigate = useNavigate()
-
+  const navigate = useNavigate();
+ 
   let total = albums.length
 const dispatch = useDispatch();
 

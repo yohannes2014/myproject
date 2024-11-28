@@ -5,6 +5,7 @@ import { AiFillCloseSquare, FaCirclePause, VscUnmute, FaPlayCircle, IoVolumeMute
 import { imageUrl, audioUrl } from '../api/musicApi';
 import { useMusicPlayer } from '../hooks/useMusicPlayer';
 import {  RootState } from "../types/musicTypes";
+import { PlayerContainer, MusicDiscri, MusicImage, AudioCover, MusicPlay, PlayControl, Duration, MusicControl, P, Name, VolumeRange } from '../styled/MusicPlayer';
 
 
 
@@ -28,15 +29,14 @@ const AudioPlayer: React.FC = () => {
    const musicUrl = useSelector((state: RootState) => state.musicPlayer.musics[0]);
 
 
+const setPlayer = useSelector((state:RootState)=>state.musicPlayer.setPlayer)
+
 
 
 
   const dispatch = useDispatch();
 
 
-/* const music = useSelector((state:RootState)=> state.musicPlayer.musics)
-const setClose = useSelector((state:RootState)=> state.musicPlayer.musicPlayer)
-const setPlay = useSelector((state:RootState)=> state.musicPlayer.isPlaying) */
 
 
   // Refs for audio element
@@ -135,24 +135,24 @@ const setPlay = useSelector((state:RootState)=> state.musicPlayer.isPlaying) */
 
  
   return (
-    <div className={`playerContainer`}>
+    <PlayerContainer hidden={setPlayer} >
       <audio ref={audioRef} src={myMusic} autoPlay />
-      <div className='musicDiscri'>
-        <div className='musicImage'>
-          <img src={myImage} alt='cover' className='audioCover' />
-        </div>
+      <MusicDiscri >
+        <MusicImage>
+          <AudioCover  src={myImage} alt='cover'  />
+        </MusicImage>
         <div>
-          <p>Title: <b>{musicUrl.title}</b></p>
-          <p>Artist: <b>{musicUrl.artist}</b></p>
+          <P>Title: <Name>{musicUrl.title}</Name></P>
+          <P>Artist: <Name>{musicUrl.artist}</Name></P>
         </div>
-      </div>
-      <div className='musicPlay'>
+      </MusicDiscri>
+      <MusicPlay>
         <div>
           <span onClick={handlePlayPause}>
             {isPlaying ? <FaCirclePause className='playPause' /> : <FaPlayCircle className='playPause' />}
           </span>
         </div>
-        <div className='playControl'>
+        <PlayControl>
           <input
             className='playRange'
             type="range"
@@ -162,18 +162,19 @@ const setPlay = useSelector((state:RootState)=> state.musicPlayer.isPlaying) */
             step="0.01"
             onChange={handleSeek}
           />
-        </div>
-        <div className='duration'>
-          <p>{formatDuration(currentTime)}</p>
-          <p>{formatDuration(duration)}</p>
-        </div>
-      </div>
-      <div className='musicControl'>
+        </PlayControl>
+        <Duration>
+          <P>{formatDuration(currentTime)}</P>
+          <P>{formatDuration(duration)}</P>
+        </Duration>
+      </MusicPlay>
+      <MusicControl>
         <AiFillCloseSquare className='close' onClick={closeBtn} />
         <span onClick={toggleMute}>
           {isMuted ? <IoVolumeMuteOutline className='muteBtn' /> : <VscUnmute className='muteBtn' />}
         </span>
-        <input
+ 
+        <VolumeRange
           type='range'
           onChange={handleVolume}
           min="0"
@@ -181,8 +182,9 @@ const setPlay = useSelector((state:RootState)=> state.musicPlayer.isPlaying) */
           value={volume}
           step="0.01"
         />
-      </div>
-    </div>
+       
+      </MusicControl>
+    </PlayerContainer>
   );
 };
 

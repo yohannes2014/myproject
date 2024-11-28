@@ -1,35 +1,19 @@
 import './App.css';
 import Header from './component/Header';
-import styled from '@emotion/styled';
 import Contact from './component/Contact';
 import AllRoutes from './routes/routes';
 import { useDispatch } from 'react-redux';
-import { setRouteName } from './features/locationSlice';
 import { fetchMusicRequest, fetchTotalRequest, fetchAlbumsRequest, fetchGenresRequest, fetchArtistsRequest } from './features/musicsSlice';
-import { useEffect } from 'react';
+import { Main } from './styled/Main.styles';
 import AudioPlayer from './component/AudioPlayer';
-import { useLocation } from 'react-router-dom';
 import { ThemeProvider } from '@emotion/react';
 import theme from './theme/themes';
+import { useEffect } from 'react';
 
 
 const App: React.FC = () => {
-  
-  const Main = styled.div`
-       max-width:1300px; 
-       margin:auto; 
-       min-height:64vh;
-    `;
 
 const dispatch = useDispatch();
-  
-const location = useLocation();
-
-useEffect(() => {
-  const routeName = location.pathname.split('/').pop() || 'Songs';
-  dispatch(setRouteName(routeName));
-}, [location, dispatch]);
-
 
 const fetchMusic = () => {
   dispatch(fetchMusicRequest())
@@ -39,7 +23,10 @@ const fetchMusic = () => {
   dispatch(fetchGenresRequest())
 }
 
-fetchMusic();
+
+useEffect(()=>{
+  fetchMusic();
+})
 
   return (
     <>

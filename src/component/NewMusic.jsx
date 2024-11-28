@@ -1,4 +1,3 @@
-
 import {addMusicRequest, fetchMusicRequest, fetchTotalRequest, musicAddedEnd, musicAddedSucce} from '../features/musicsSlice'
 import { useDispatch, useSelector } from 'react-redux';
 import { defaultImage } from '../api/musicApi';
@@ -6,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { Cancel, Container, File, Submit } from '../styled/Form.styles';
 import { AddedSuccesfully } from "./Notification";
 import { useMusic } from '../hooks/useMusic';
+
 
 const NewMusic = () => {
   const dispatch = useDispatch();

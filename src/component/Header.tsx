@@ -3,8 +3,8 @@ import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import SubHeader from './SubHeader';
 import { AddNew, Container, H4, Logo, Nav, Navigation, NavLink, AftBtn, CenBtn, NavBtn, BefOpn } from '../styled/Header.Styles';
+import { PiMusicNotesPlusFill } from '../icons/index';
 
-// Define types for your Redux state (RootState)
 interface RootState {
   musics: { 
     total: number;
@@ -12,16 +12,16 @@ interface RootState {
 }
 
 const Header = () => {
-  // State hook to toggle the dropdown menu
+  
   const [isOpen, setIsOpen] = useState<boolean>(true);
 
-  // Selector to get the total number of music items
+
   const totalMusic = useSelector((state: RootState) => state.musics.total);
 
-  // Navigation hook
+
   const navigate = useNavigate();
 
-  // Navigation handler functions
+ 
   const AddNewMusic = () => {
     navigate('/AddNew');
   };
@@ -47,7 +47,7 @@ const Header = () => {
   };
 
   return (
-    <Container>
+    <Container> 
       <Navigation>
         <Logo onClick={() => navigate('/')} className="logo">
           My Music
@@ -73,7 +73,8 @@ const Header = () => {
           <CenBtn className={isOpen ? 'centerOpen' : 'centerClose'} />
           <AftBtn className={isOpen ? 'bottomOpen' : 'bottomClose'} />
         </NavBtn>
-        <AddNew onClick={AddNewMusic}>Add New Music</AddNew>
+        <AddNew onClick={AddNewMusic} className='addMusic' >Add New</AddNew>
+        <PiMusicNotesPlusFill className='addBtn' onClick={AddNewMusic} />
         <H4>Songs : {totalMusic}</H4>
       </Navigation>
       <SubHeader />

@@ -43,7 +43,7 @@ const AlbumList: React.FC = () => {
       ))}
         </ListofMusic>
       </AlbumCont>
-    </HeroSection>
+    </HeroSection> 
   )
 }
 

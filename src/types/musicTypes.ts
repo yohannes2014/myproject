@@ -61,11 +61,15 @@ export interface RootState {
   },
    musicPlayer: {
     musics:Musics[],
-    isPlaying:boolean,
-    musicPlayer:boolean,
+    setPlay:boolean,
+    setPlayer:boolean,
+  },
   
-  
-  }
+ location: {
+  routeName: string,
+  pathName: string,
+}
+
 
  
 }
@@ -117,7 +121,7 @@ export interface musicPlayer {
 
 
 
-export interface Location {
+export interface location {
   routeName: string,
   pathName: string,
 }

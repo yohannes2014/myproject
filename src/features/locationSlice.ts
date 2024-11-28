@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Location } from '../types/musicTypes';
+import { location } from '../types/musicTypes';
 
-const initialState:Location = {
+const initialState:location = {
     routeName: '',
     pathName: '',
 }
@@ -12,11 +12,11 @@ const locationSlice = createSlice({
 
     reducers :{
        
-    pathName(state, action: PayloadAction<string>) {
+      pathName(state, action: PayloadAction<any>) {
         state.pathName = action.payload;
       },
   
-      setRouteName(state, action: PayloadAction<string>) {
+      setRouteName(state, action: PayloadAction<any>) {
         state.routeName = action.payload;
       } 
     }

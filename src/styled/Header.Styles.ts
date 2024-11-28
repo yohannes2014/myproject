@@ -1,8 +1,6 @@
 import styled from "@emotion/styled";
 import theme from "../theme/themes";
 
-
-
 export const Container = styled.div`
     width: 100%;
     height: ${theme.navHeight[0]};
@@ -20,18 +18,18 @@ export const Container = styled.div`
 
    
 export const Navigation = styled.span`
-width: ${theme.breakpoints[0]};
-margin: auto;
-display: flex;
-justify-content: space-between;
-height: ${theme.navHeight[0]};
-align-items: center;
+  width: ${theme.navWidth[0]};
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  height: ${theme.navHeight[0]};
+  align-items: center;
 
-${theme.breakpoints.map((bp, index) => `
-    @media (max-width: ${bp}) {
-      width: ${theme.width[index + 1]};
-    }
-  `)}
+  ${theme.breakpoints.map((bp, index) => `
+      @media (max-width: ${bp}) {
+        width: ${theme.navWidth[index + 1]};
+      }
+    `)}
 
 `;
 
@@ -58,7 +56,7 @@ export const Logo = styled.div`
     font-weight: bold;
     cursor: pointer;
     transition:0.3s ease-in-out;
-    :hover{
+    :hover{ 
         color: rgb(3, 3, 300)  
     };
 
@@ -153,26 +151,18 @@ export const AddNew = styled.div`
 `;
 
 export const Sub = styled.div`
-width: ${theme.breakpoints[0]};
-margin: auto;
-margin-top:10px;
-height: ${theme.navHeight[2]};
-padding-left:20px;
-background-color:white;
-
-
-
+    width: ${theme.navWidth[0]};
+    margin: auto;
+    margin-top:10px;
+    height: ${theme.navHeight[2]};
+    padding-left:20px;
+    background-color:white;
 ${theme.breakpoints.map((bp, index) => `
     @media (max-width: ${bp}) {
-      width: ${theme.width[index + 1]};
+      width: ${theme.navWidth[index + 1]};
     }
   `)}
 
 `;
 
 
-
-
-
-   
-   
