@@ -36,8 +36,8 @@ const albumTitle = albumMusics?.songs[0];
             <AlbumImage src={`${imageUrl}/${albumTitle.image}`} alt='album' />
           </AlbumPhoto>
           <div>
-            <h3>Album {albumTitle.album}</h3>
-            <h5>Artis {albumTitle.artist}</h5>
+            <h3>{albumTitle.album}</h3>
+            <h5>{albumTitle.artist}</h5>
           </div>
         </ListHeader>
         {albumList.map((music)=>(
