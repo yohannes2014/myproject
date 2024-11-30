@@ -21,12 +21,12 @@ export const fetchMusicApi = (): Promise<AxiosResponse<ApiResponse<Music[]>>> =>
   return axios.get('http://localhost:5000/api/musics');
 };
 
-// Add new music
+// Add new my music
 export const addMusicApi = (music: Music): Promise<AxiosResponse<ApiResponse<Music>>> => {
   return axios.post('http://localhost:5000/api/musics', music);
 };
 
-// Update music
+// Update my music
 export const updateMusicApi = (id: string, music: Music): Promise<AxiosResponse<ApiResponse<Music>>> => {
   return axios.put(`http://localhost:5000/api/musics/${id}`, music);
 };
