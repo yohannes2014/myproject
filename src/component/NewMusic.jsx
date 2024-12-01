@@ -74,7 +74,7 @@ const NewMusic = () => {
   }
   
   const handleCancel = () =>{
-    navigate(('/'))
+    navigate('/')
     }
 
 const navigate = useNavigate()

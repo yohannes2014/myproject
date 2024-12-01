@@ -32,16 +32,16 @@ const ArtistList: React.FC = () => {
             <AlbumImage src={`${imageUrl}/${trackHeader.image}`} alt='album' />
           </AlbumPhoto>
           <div>
-            <h3>Album {trackHeader.album}</h3>
-            <h5>Artis {trackHeader.artist}</h5>
+            <h3>{trackHeader.album}</h3>
+            <h5>{trackHeader.artist}</h5>
           </div>
         </ListHeader>
         <ListofMusic>
           {track.map((music, id) => (
-            <ListAlbum key={id} onClick={() => handlePlay({ setPlay: true, musics: [music], setPlayer: false })}  >
+            <ListAlbum key={id} onClick={() => handlePlay({ setPlay: true, musics: [music], setPlayer: false })} >
               <ListDiscrip>
                 <DiscTitle>{music.title}</DiscTitle>
-                <Detail>Album : {music.album}</Detail>
+                <Detail>Duration : {music.duration}</Detail>
               </ListDiscrip>
             </ListAlbum>
           ))}

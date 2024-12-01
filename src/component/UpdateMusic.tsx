@@ -76,7 +76,6 @@ const UpdateMusic = () => {
     <div>
     {updated &&  <UpdatedSuccessfully />}
       <Container>
-     
         <form className="form" onSubmit={handleUpdate}>
           <div className="input-box">
             <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} name='title' placeholder="Title" autoFocus />

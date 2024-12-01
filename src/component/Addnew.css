@@ -1,5 +1,5 @@
 
-.container {
+/* .container {
     position: fixed;
     width: 100%;
     background: #000000e2;
@@ -12,9 +12,9 @@
     justify-content: center;
     align-items: center;
     
-  }
+  } */
 
-  .container .form {
+ /*  .container .form {
     margin-top: 30px;
   }
   .form .input-box {
@@ -23,8 +23,8 @@
   }
   .input-box label {
     color: #333;
-  }
-  .form :where(.input-box input, .select-box) {
+  } */
+  /* .form :where(.input-box input, .select-box) {
     position: relative;
     height: 50px;
     width: 500px;
@@ -44,11 +44,11 @@
     column-gap: 15px;
     
   }
-
+ */
  
 
   /*Responsive*/
-  @media screen and (max-width: 500px) {
+/*   @media screen and (max-width: 500px) {
     .form .column {
       flex-wrap: wrap;
     }
@@ -56,12 +56,12 @@
       row-gap: 15px;
     }
   }
+ */
 
-
-
+/* 
 .updateImage{
   width: 200px;
   height: 100px;
   
 }
- 
+  */
