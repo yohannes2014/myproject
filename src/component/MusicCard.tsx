@@ -8,12 +8,15 @@ import { useEffect } from "react";
 import { imageUrl } from "../api/musicApi";
 import { Warnning } from "./Notification";
 import { RootState, Musics} from "../types/musicTypes"
+import Loading from "./Loading";
 
 const MusicCard: React.FC = () => {
 
   const dispatch = useDispatch();
   const musics = useSelector((state: RootState) => state.musics.musics); 
   const warning = useSelector((state: RootState) => state.musics.removeMusic);
+  const loading = useSelector((state: RootState) => state.musics.loading);
+  
   const navigate = useNavigate();
   const total = musics.length;
 
@@ -41,6 +44,7 @@ const MusicCard: React.FC = () => {
   return (
     <>
       {warning && <Warnning />}
+      {loading && <Loading />}
       
       {musics.map((music) => (
         <Card key={music._id} >

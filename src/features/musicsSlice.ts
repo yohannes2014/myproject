@@ -16,6 +16,7 @@ const initialState:MusicsState = {
   musicAdded: false,
   musicUpdate: false,
   duration:'0:00',
+
   
 };
 

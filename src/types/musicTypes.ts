@@ -58,6 +58,7 @@ export interface RootState {
     newMusic:newMusic[];
     currentMusic: Musics | null;
     removeMusic: boolean;
+    loading:boolean;
   },
    musicPlayer: {
     musics:Musics[],
