@@ -16,7 +16,7 @@ export const Container = styled.div`
     background-color: white;   
 `;
 
-   
+
 export const Navigation = styled.span`
   width: ${theme.navWidth[0]};
   margin: auto;
@@ -30,7 +30,6 @@ export const Navigation = styled.span`
         width: ${theme.navWidth[index + 1]};
       }
     `)}
-
 `;
 
 export const Nav = styled.div`
@@ -40,9 +39,7 @@ flex-direction: row;
 
 @media (max-width: 750px) { 
     display:none;
-
 }
-
 `;
 
 export const H4 = styled.h4`
@@ -65,8 +62,6 @@ export const Logo = styled.div`
       font-size: ${theme.logoFont[index + 1]};
     }
   `)};
-    
-
 
 `;
 export const NavLink = styled.div`
@@ -89,7 +84,7 @@ export const NavLink = styled.div`
     color: rgb(3, 3, 300); 
 }
   :hover::after{
-    
+
     background-color:rgb(3, 3, 54);
   }
 `;
@@ -103,7 +98,7 @@ export const NavBtn = styled.div`
     :hover{
         box-shadow: 0px 0px 8px 1px wheat;
     }
-    
+
     @media (min-width: 750px) { 
   display:none;
 
@@ -112,7 +107,6 @@ export const NavBtn = styled.div`
 
 
 export const CenBtn = styled.div`
-  
    background-color:${theme.colors.primary};
    width:25px;
    height:4px;
@@ -120,7 +114,6 @@ export const CenBtn = styled.div`
    margin:4px;
 `;
 export const BefOpn = styled.div`
-  
    background-color:${theme.colors.primary};
    width:25px;
    height:4px;
@@ -130,13 +123,13 @@ export const BefOpn = styled.div`
 `;
 
 export const AftBtn = styled.div`
-  
    background-color:${theme.colors.primary};
    width:25px;
    height:4px;
    border-radius:4px;
    margin:4px;
 `;
+
 export const AddNew = styled.div`
  background-color:${theme.colors.primary};
  color:white;

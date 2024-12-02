@@ -1,16 +1,11 @@
-import React, { useEffect, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
 import { closePlayer } from '../features/musicPlayerSlice';
 import { AiFillCloseSquare, FaCirclePause, VscUnmute, FaPlayCircle, IoVolumeMuteOutline } from '../icons';
-import { imageUrl, audioUrl } from '../api/musicApi';
 import { useMusicPlayer } from '../hooks/useMusicPlayer';
-import {  RootState } from "../types/musicTypes";
 import { PlayerContainer, MusicDiscri, MusicImage, AudioCover, MusicPlay, PlayControl, Duration, MusicControl, P, Name, VolumeRange } from '../styled/MusicPlayer';
 
-
-
 const AudioPlayer: React.FC = () => {
-  // Destructure the values from the custom hook
+
   const {
     currentTime,
     setCurrentTime,
@@ -21,21 +16,14 @@ const AudioPlayer: React.FC = () => {
     volume,
     setVolume,
     isPlaying,
-    setIsPlaying,             
+    setIsPlaying,
+    musicUrl,
+    myImage,
+    myMusic,
+    audioRef,
+    setPlayer,
+    dispatch
   } = useMusicPlayer();
-
-
-
-   const musicUrl = useSelector((state: RootState) => state.musicPlayer.musics[0]);
-const setPlayer = useSelector((state:RootState)=>state.musicPlayer.setPlayer);
-
-  const dispatch = useDispatch();
-  // Refs for audio element
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-  const myMusic = `${audioUrl}/${musicUrl.audio}`;
-  const myImage = `${imageUrl}/${musicUrl.image}`;  
-
-  
 
 
   // Play and pause music
@@ -57,10 +45,10 @@ const setPlayer = useSelector((state:RootState)=>state.musicPlayer.setPlayer);
   const toggleMute = () => {
     if (isMuted) {
       setIsMuted(false);
-      if (audioRef.current) audioRef.current.volume = volume; 
+      if (audioRef.current) audioRef.current.volume = volume;
     } else {
       setIsMuted(true);
-      if (audioRef.current) audioRef.current.volume = 0; 
+      if (audioRef.current) audioRef.current.volume = 0;
     }
   };
 
@@ -109,7 +97,7 @@ const setPlayer = useSelector((state:RootState)=>state.musicPlayer.setPlayer);
         audioElement.removeEventListener('loadeddata', handleLoaded);
       }
     };
-  }, [volume, setCurrentTime, setDuration]);
+  }, [volume, setCurrentTime, setDuration, audioRef]);
 
   // Format the time duration
   const formatDuration = (durationSeconds: number) => {
@@ -123,14 +111,13 @@ const setPlayer = useSelector((state:RootState)=>state.musicPlayer.setPlayer);
   const closeBtn = () => {
     dispatch(closePlayer());
   };
-   
 
   return (
     <PlayerContainer hidden={setPlayer} >
       <audio ref={audioRef} src={myMusic} autoPlay />
       <MusicDiscri >
         <MusicImage>
-          <AudioCover  src={myImage} alt='cover'  />
+          <AudioCover src={myImage} alt='cover' />
         </MusicImage>
         <div>
           <P>Title: <Name>{musicUrl.title}</Name></P>
@@ -164,7 +151,7 @@ const setPlayer = useSelector((state:RootState)=>state.musicPlayer.setPlayer);
         <span onClick={toggleMute}>
           {isMuted ? <IoVolumeMuteOutline className='muteBtn' /> : <VscUnmute className='muteBtn' />}
         </span>
- 
+
         <VolumeRange
           type='range'
           onChange={handleVolume}
@@ -173,27 +160,10 @@ const setPlayer = useSelector((state:RootState)=>state.musicPlayer.setPlayer);
           value={volume}
           step="0.01"
         />
-       
       </MusicControl>
     </PlayerContainer>
   );
 };
 
 export default AudioPlayer;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

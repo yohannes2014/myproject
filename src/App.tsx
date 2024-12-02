@@ -8,7 +8,6 @@ import AudioPlayer from './component/AudioPlayer';
 import { ThemeProvider } from '@emotion/react';
 import theme from './theme/themes';
 
-
 const App: React.FC = () => {
 
 useFetch();

@@ -1,19 +1,18 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { fetchMusicRequest, fetchTotalRequest, fetchAlbumsRequest, fetchGenresRequest, fetchArtistsRequest  } from "../features/musicsSlice";
+import { fetchMusicRequest, fetchTotalRequest, fetchAlbumsRequest, fetchGenresRequest, fetchArtistsRequest } from "../features/musicsSlice";
 
 const useFetch = () => {
 
-const dispatch = useDispatch();
-
+  const dispatch = useDispatch();
   
-  useEffect(()=>{
+  useEffect(() => {
     dispatch(fetchMusicRequest())
     dispatch(fetchTotalRequest())
     dispatch(fetchAlbumsRequest())
     dispatch(fetchArtistsRequest())
     dispatch(fetchGenresRequest())
-  },[dispatch]) 
+  }, [dispatch])
 
 }
 

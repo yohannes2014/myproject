@@ -1,5 +1,4 @@
 import { cancelRemoveCard, deleteMusicRequest, fetchTotalRequest } from '../features/musicsSlice';
-import { useDispatch, useSelector } from 'react-redux';
 import {
   Notification,
   CancelNotificationBtn,
@@ -7,12 +6,10 @@ import {
   ConfirmNotificationBtn,
   SuccessNotification
 } from "../styled/Notification.styles";
-import { RootState } from '../types/musicTypes';
-
-
+import { useNotification } from '../hooks/useMusic';
 export const Warnning: React.FC = () => {
-  const music = useSelector((state: RootState) => state.musics.currentMusic);
-  const dispatch = useDispatch();
+
+  const { music, dispatch } = useNotification();
 
   const warningConfirm = () => {
     if (music) {

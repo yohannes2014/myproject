@@ -1,19 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { GenresHeader, Detail, DiscSpan, HeroSection, ListDiscrip, ListItem, Button } from '../styled/Album.styles';
+import React, { useEffect } from 'react';
+import { GenresHeader, Detail, DiscSpan, HeroSection, ListDiscrip, ListItem, Button } from '../styled/Musics.styles';
 import { setMusicPlay } from '../features/musicPlayerSlice';
 import { totalMUsicItem } from '../features/musicsSlice';
-import { RootState, musicPlayer , Musics } from '../types/musicTypes';
+import { musicPlayer } from '../types/musicTypes';
+import { useGenres } from '../hooks/useMusic';
 
 const Genres: React.FC = () => {
-  
-  const genres = useSelector((state: RootState) => state.musics.genres);
-  const myMusic = useSelector((state: RootState) => state.musics.musics);
-  const [selectGenres, setSelectGenres] = useState<string[]>([]);  
-  const [filteredMusic, setFilteredMusic] = useState<Musics[]>(myMusic);  
-  const dispatch = useDispatch();
 
-  let total = genres.length;
+  const { genres, myMusic, selectGenres, setSelectGenres, filteredMusic, setFilteredMusic, dispatch, total } = useGenres();
 
   useEffect(() => {
     dispatch(totalMUsicItem(total));
@@ -44,7 +38,7 @@ const Genres: React.FC = () => {
     filterMusic();
   });
 
-  const handlePlay = (music:musicPlayer) => {
+  const handlePlay = (music: musicPlayer) => {
     dispatch(setMusicPlay(music));
   };
 
@@ -52,7 +46,7 @@ const Genres: React.FC = () => {
     <>
       <HeroSection>
         <GenresHeader>
-          {genres.map((item) => ( 
+          {genres.map((item) => (
             <div key={item._id}>
               <Button onClick={() => handleFilter(item._id)} selected={selectGenres.includes(item._id)}>
                 {item._id}
@@ -61,7 +55,7 @@ const Genres: React.FC = () => {
           ))}
         </GenresHeader>
         {filteredMusic.map((music) => (
-          <ListItem key={music._id}  onClick={()=>handlePlay({ setPlay: true, musics:[music] , setPlayer:false })}  >
+          <ListItem key={music._id} onClick={() => handlePlay({ setPlay: true, musics: [music], setPlayer: false })}  >
             <ListDiscrip>
               <DiscSpan>Genres : {music.genres}</DiscSpan>
               <DiscSpan>Title : {music.title}</DiscSpan>

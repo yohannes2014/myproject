@@ -4,10 +4,10 @@ import musicPlayerSlice from './musicPlayerSlice'
 import locationSlice from './locationSlice';
 
 const rootReducer = combineReducers({
-  musics:musicSlic,
-  musicPlayer:musicPlayerSlice,
-  location:locationSlice
- 
+  musics: musicSlic,
+  musicPlayer: musicPlayerSlice,
+  location: locationSlice
+
 });
 
 export default rootReducer;

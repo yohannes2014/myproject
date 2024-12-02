@@ -17,8 +17,9 @@ export const Mycard = styled.div`
     transition: 0.3s ease-in-out;
 
 `;
+
 export const MusicCover = styled.div`
-  grid-column: 1/3;
+    grid-column: 1/3;
     grid-row: 1/4;
     transition: all 0.5s ease-in-out;
     :hover{
@@ -26,10 +27,7 @@ export const MusicCover = styled.div`
       background-size: cover;
 
     }
-
 `;
-
-
 
 export const Myimage = styled.img`
   width: 200px;
@@ -37,30 +35,16 @@ export const Myimage = styled.img`
     border-bottom: solid 1px blue;
 `;
 
-
-
-
-
-
-
-
-
-export const MusicDiscription =  styled.div`
+export const MusicDiscription = styled.div`
    background-color: #ffffff;
     grid-column: 1/3;
     grid-row: 4/5;
     display: flex;
     justify-content: space-between;
 `;
+
 export const ItemDescription = styled.div`
  display: flex;
  flex-direction: column;
 `;
-
-
-
-
-
-
-
 

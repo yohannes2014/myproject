@@ -16,8 +16,6 @@ ${theme.breakpoints.map((bp, index) => `
       height:${theme.contactHeight[index + 1]};
     }
   `)}
-
-
   
 `;
 export const Link = styled.a`
@@ -35,7 +33,4 @@ ${theme.breakpoints.map((bp, index) => `
       font-size: ${theme.contactFont[index + 1]};
     }
   `)}
-
-
-
 `;

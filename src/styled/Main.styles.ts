@@ -15,3 +15,20 @@ export const Mycard = styled.div`
   align-items: center;
   
     `;
+
+export const Load = styled.div`
+   font-size:30px; 
+   font-weight:bold;
+`;
+
+
+export const Pagenotfound = styled.div`
+position:fixed;
+top:0;
+left:0;
+display:flex;
+justify-content:center;
+align-items:center;
+width:100vw;
+height:100vh;
+`;

@@ -1,11 +1,7 @@
-import styled from '@emotion/styled'
 import React from 'react'
+import { Load } from '../styled/Main.styles'
 
-const Loading:React.FC = () => {
-const Load = styled.div`
-   font-size:30px; 
-   font-weight:bold;
-`;
+const Loading: React.FC = () => {
 
   return (
     <Load>Loading...</Load>

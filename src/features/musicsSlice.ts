@@ -1,8 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { MusicsState, Musics, Artist, Genres } from '../types/musicTypes';
 
-// Define the initial state based on the MusicState type
-const initialState:MusicsState = {
+const initialState: MusicsState = {
   musics: [],
   albums: [],
   artist: [],
@@ -10,14 +9,14 @@ const initialState:MusicsState = {
   loading: false,
   error: null,
   total: 0,
-  currentMusic:null,
+  currentMusic: null,
   totalItem: 0,
   removeMusic: false,
   musicAdded: false,
   musicUpdate: false,
-  duration:'0:00',
+  duration: '0:00',
 
-  
+
 };
 
 const musicSlice = createSlice({
@@ -31,13 +30,13 @@ const musicSlice = createSlice({
     fetchMusicSuccess: (state, action: PayloadAction<Musics[]>) => {
       state.loading = false;
       state.musics = action.payload;
-     
+
     },
-    fetchMusicFailure: (state, action ) => {
+    fetchMusicFailure: (state, action) => {
       state.loading = false;
       state.error = action.payload;
     },
-    
+
     // Add Music
     addMusicRequest: (state) => {
       state.error = null;
@@ -45,12 +44,12 @@ const musicSlice = createSlice({
     addMusicSuccess: (state, action) => {
       state.musics.push(action.payload);
     },
-    addMusicFailure: (state, action ) => {
+    addMusicFailure: (state, action) => {
       state.error = action.payload;
     },
-    
+
     updateMusicRequest: (state, action: PayloadAction<any>) => {
-      
+
       state.loading = true;
       state.error = null;
     },
@@ -59,25 +58,25 @@ const musicSlice = createSlice({
       state.musics = state.musics.map((music) =>
         music._id === updatedMusic.id ? updatedMusic : music
       );
-      state.musicUpdate = true; 
+      state.musicUpdate = true;
       state.loading = false;
     },
     updateMusicFailure: (state, action: PayloadAction<string>) => {
       state.error = action.payload;
       state.loading = false;
     },
-    
+
     // Delete Music
     deleteMusicRequest: (state, action: PayloadAction<string>) => {
       state.error = null;
     },
-    deleteMusicSuccess: (state, action ) => {
+    deleteMusicSuccess: (state, action) => {
       state.musics = state.musics.filter(music => music._id !== action.payload);
     },
-    deleteMusicFailure: (state, action ) => {
+    deleteMusicFailure: (state, action) => {
       state.error = action.payload;
     },
-    
+
     // Set Current Music
     setCurrentRequest: (state) => {
       state.error = null;
@@ -86,7 +85,7 @@ const musicSlice = createSlice({
       const musicId = action.payload._id;
       state.currentMusic = state.musics.find(music => music._id === musicId) || null;
     },
-    setCurrentFailure: (state, action ) => {
+    setCurrentFailure: (state, action) => {
       state.error = action.payload;
     },
 
@@ -97,10 +96,10 @@ const musicSlice = createSlice({
     fetchTotalSuccess: (state, action) => {
       state.total = action.payload;
     },
-    fetchTotalFailure: (state, action ) => {
+    fetchTotalFailure: (state, action) => {
       state.error = action.payload;
     },
-    
+
     // Fetch Albums
     fetchAlbumsRequest: (state) => {
       state.error = null;
@@ -109,7 +108,7 @@ const musicSlice = createSlice({
       state.loading = false;
       state.albums = action.payload;
     },
-    fetchAlbumsFailure: (state, action ) => {
+    fetchAlbumsFailure: (state, action) => {
       state.loading = false;
       state.error = action.payload;
     },
@@ -122,7 +121,7 @@ const musicSlice = createSlice({
       state.loading = false;
       state.artist = action.payload;
     },
-    fetchArtistsFailure: (state, action ) => {
+    fetchArtistsFailure: (state, action) => {
       state.loading = false;
       state.error = action.payload;
     },
@@ -135,7 +134,7 @@ const musicSlice = createSlice({
       state.loading = false;
       state.genres = action.payload;
     },
-    fetchGenresFailure: (state, action ) => {
+    fetchGenresFailure: (state, action) => {
       state.loading = false;
       state.error = action.payload;
     },
@@ -144,7 +143,7 @@ const musicSlice = createSlice({
     totalMUsicItem: (state, action: PayloadAction<number>) => {
       state.totalItem = action.payload;
     },
-    findMuiscById: (state, action ) => {
+    findMuiscById: (state, action) => {
       state.currentMusic = state.musics.find(music => music._id === action.payload) || null;
     },
     setRemoveCard: (state) => {
@@ -165,7 +164,7 @@ const musicSlice = createSlice({
     musicUpdateEnd: (state) => {
       state.musicUpdate = false;
     },
-    
+
   },
 });
 

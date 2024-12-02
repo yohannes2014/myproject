@@ -3,23 +3,22 @@ import { musicPlayer } from "../types/musicTypes";
 
 const myMusic = {
   _id: '',
-title: '',
-artist: '',
-album: '',
-genres: '',
-image: '',
-audio: '',
-totalItem:0,
-duration: ''
+  title: '',
+  artist: '',
+  album: '',
+  genres: '',
+  image: '',
+  audio: '',
+  totalItem: 0,
+  duration: ''
 }
 
-const initialState:musicPlayer = {
-  musics:[myMusic], 
-  setPlay:false,
+const initialState: musicPlayer = {
+  musics: [myMusic],
+  setPlay: false,
   setPlayer: true,
 
 };
-
 const musicPlayerSlice = createSlice({
   name: 'music',
   initialState,
@@ -27,27 +26,21 @@ const musicPlayerSlice = createSlice({
     setMusicPlay(state, action: PayloadAction<musicPlayer>) {
       state.setPlay = action.payload.setPlay;
       state.setPlayer = false;
-      state.musics = action.payload.musics;  
+      state.musics = action.payload.musics;
     },
 
     pauseSong(state) {
-      state.setPlay = false; 
+      state.setPlay = false;
     },
 
     closePlayer(state) {
-      state.setPlayer = true; 
-      state.musics = [myMusic]; 
+      state.setPlayer = true;
+      state.musics = [myMusic];
     },
 
   },
 });
 
-
-export const {
-  pauseSong,
-  closePlayer,
-  setMusicPlay,
-} = musicPlayerSlice.actions;
-
+export const { pauseSong, closePlayer, setMusicPlay } = musicPlayerSlice.actions;
 
 export default musicPlayerSlice.reducer;

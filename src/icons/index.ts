@@ -9,14 +9,14 @@ import { FaRegEdit } from "react-icons/fa";
 import { PiMusicNotesPlusFill } from "react-icons/pi";
 
 
-export { 
-IoVolumeMuteOutline, 
-FaPlayCircle ,
-VscUnmute,
-FaCirclePause ,
-AiFillCloseSquare,
-RiDeleteBin6Line,
-FaRegEdit,
-PiMusicNotesPlusFill,
+export {
+    IoVolumeMuteOutline,
+    FaPlayCircle,
+    VscUnmute,
+    FaCirclePause,
+    AiFillCloseSquare,
+    RiDeleteBin6Line,
+    FaRegEdit,
+    PiMusicNotesPlusFill,
 
 }

@@ -1,6 +1,3 @@
-
-
-
 export interface Musics {
   _id: string;
   title: string;
@@ -11,7 +8,7 @@ export interface Musics {
   audio: string;
   duration: string;
   totalItem: number;
-  
+
 }
 
 export interface newMusic {
@@ -47,50 +44,45 @@ export interface Genres {
   songs: Musics[];
 }
 
-
-
 export interface RootState {
   musics: {
     albums: Album[];
     artist: Artist[];
     genres: Genres[];
-    musics:Musics[];
-    newMusic:newMusic[];
+    musics: Musics[];
+    newMusic: newMusic[];
     currentMusic: Musics | null;
     removeMusic: boolean;
-    loading:boolean;
+    loading: boolean;
+    total: number;
+    musicAdded: boolean;
   },
-   musicPlayer: {
-    musics:Musics[],
-    setPlay:boolean,
-    setPlayer:boolean,
-  
+  musicPlayer: {
+    musics: Musics[],
+    setPlay: boolean,
+    setPlayer: boolean,
   },
-  
- location: {
-  routeName: string,
-  pathName: string,
+
+  location: {
+    routeName: string,
+    pathName: string,
+  }
 }
-
-
- 
-}
-
 
 export interface MusicsState {
   albums: Album[];
   artist: Artist[];
   genres: Genres[];
-  musics:Musics[];
+  musics: Musics[];
   loading: boolean;
   error: string | null;
-  total:number;
-  currentMusic:any;
-  totalItem:number;
-  removeMusic:boolean;
+  total: number;
+  currentMusic: any;
+  totalItem: number;
+  removeMusic: boolean;
   musicAdded: boolean;
   musicUpdate: boolean;
-  duration:string;
+  duration: string;
 }
 
 export interface Music {
@@ -101,28 +93,26 @@ export interface Music {
   genres: string;
   image: string | null;
   audio: string | null;
-  duration:string
+  duration: string
 }
 
 export interface musicPlayer {
-    musics:[
-      {
-        _id: string,
+  musics: [
+    {
+      _id: string,
       title: string,
       artist: string,
       album: string,
       genres: string,
       image: string,
       audio: string,
-      totalItem:number,
+      totalItem: number,
     }
-    ],
-    setPlay: boolean,
-    setPlayer: boolean,
-   
-  }
+  ],
+  setPlay: boolean,
+  setPlayer: boolean,
 
-
+}
 
 export interface location {
   routeName: string,

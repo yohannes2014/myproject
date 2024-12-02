@@ -1,18 +1,12 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom';
-import { AlbumCont, ListHeader, Detail, DiscTitle, HeroSection, ListAlbum, ListDiscrip, ListofMusic, AlbumPhoto, AlbumImage } from '../styled/Album.styles';
+import { AlbumCont, ListHeader, Detail, DiscTitle, HeroSection, ListAlbum, ListDiscrip, ListofMusic, AlbumPhoto, AlbumImage } from '../styled/Musics.styles';
 import { setMusicPlay } from '../features/musicPlayerSlice';
-import { RootState, musicPlayer } from '../types/musicTypes';
+import { musicPlayer } from '../types/musicTypes';
 import { imageUrl } from '../api/musicApi';
+import { useArtist } from '../hooks/useMusic';
 
 const ArtistList: React.FC = () => {
-  
-  const { artist } = useParams<{ artist: string }>();
-
-  const dispatch = useDispatch();
-
-  const artistMusics = useSelector((state: RootState) => state.musics.artist.find(music => music._id === artist));
+  const { dispatch, artistMusics } = useArtist()
 
   const handlePlay = (music: musicPlayer) => {
     dispatch(setMusicPlay(music));
@@ -27,7 +21,7 @@ const ArtistList: React.FC = () => {
   return (
     <HeroSection>
       <AlbumCont>
-      <ListHeader>
+        <ListHeader>
           <AlbumPhoto>
             <AlbumImage src={`${imageUrl}/${trackHeader.image}`} alt='album' />
           </AlbumPhoto>

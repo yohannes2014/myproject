@@ -1,27 +1,12 @@
-import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { useState } from 'react';
 import SubHeader from './SubHeader';
 import { AddNew, Container, H4, Logo, Nav, Navigation, NavLink, AftBtn, CenBtn, NavBtn, BefOpn } from '../styled/Header.Styles';
 import { PiMusicNotesPlusFill } from '../icons/index';
-
-interface RootState {
-  musics: { 
-    total: number;
-  };
-}
+import { useHeader } from '../hooks/useMusic';
 
 const Header = () => {
-  
-  const [isOpen, setIsOpen] = useState<boolean>(true);
 
+  const { totalMusic, navigate, isOpen, setIsOpen } = useHeader();
 
-  const totalMusic = useSelector((state: RootState) => state.musics.total);
-
-
-  const navigate = useNavigate();
-
- 
   const AddNewMusic = () => {
     navigate('/AddNew');
   };
@@ -48,7 +33,7 @@ const Header = () => {
 
 
   return (
-    <Container> 
+    <Container>
       <Navigation>
         <Logo onClick={() => navigate('/')} className="logo">
           My Music
@@ -61,7 +46,7 @@ const Header = () => {
         </Nav>
 
         <div className="DropDownCon">
-          <div className={ !isOpen ? 'dropDown' : 'dropDownClose'}>
+          <div className={!isOpen ? 'dropDown' : 'dropDownClose'}>
             <NavLink onClick={Home}>Songs</NavLink>
             <NavLink onClick={Album}>Albums</NavLink>
             <NavLink onClick={Artist}>Artist</NavLink>

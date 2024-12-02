@@ -49,8 +49,8 @@ export const FileUpdate = styled.label`
 `;
 
 export const MyImages = styled.img`
-width:150px;
-height:100px;
+    width:150px;
+    height:100px;
 `;
 
 export const Submit = styled.button`

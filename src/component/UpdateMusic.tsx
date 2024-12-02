@@ -1,80 +1,62 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 import { fetchMusicRequest, musicUpdateEnd, musicUpdateSucce, updateMusicRequest } from '../features/musicsSlice';
 import { Cancel, Container, FileUpdate, MyImages, Submit } from "../styled/Form.styles";
 import { UpdatedSuccessfully } from "./Notification";
-import { imageUrl } from "../api/musicApi";
-import { RootState,  Musics } from "../types/musicTypes";
+import { useUpdate } from '../hooks/useMusic';
 
 const UpdateMusic = () => {
 
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const { id } = useParams<string>();
-
-  const music = useSelector((state:RootState) => state.musics.musics.find((music:Musics) => music._id === id));
-  const updated = useSelector((state:any)=>state.musics.musicUpdate);
-
-  const [title, setTitle] = useState(music?.title);
-  const [artist, setArtist] = useState(music?.artist);
-  const [album, setAlbum] = useState(music?.album);
-  const [genres, setGenres] = useState(music?.genres);
-  const [image, setImage] = useState<File | string | null>(null);
-
-  const [imagePreview, setImagePreview] = useState( `${imageUrl}/${music?.image}`); 
+  const { navigate, dispatch, id, updated, title, setTitle, artist, setArtist, album, setAlbum, genres, setGenres, image, setImage, imagePreview, setImagePreview
+  } = useUpdate();
 
   useEffect(() => {
     if (image && image instanceof File) {
-      setImagePreview(URL.createObjectURL(image)); 
+      setImagePreview(URL.createObjectURL(image));
     }
-  }, [image]);
+  }, [image, setImagePreview]);
 
-  
-  const handleImage = (e:any) =>{
-  
+  const handleImage = (e: any) => {
+
     const selectedImage = e.target.files[0];
-    setImage(selectedImage); 
-
+    setImage(selectedImage);
   }
 
-
-  const handleUpdate = (e:any) => {
+  const handleUpdate = (e: any) => {
     e.preventDefault();
 
- const updatedMusic = {
-  id,
-  title, 
-  artist, 
-  album, 
-  genres, 
-  image
- }
-    
+    const updatedMusic = {
+      id,
+      title,
+      artist,
+      album,
+      genres,
+      image
+    }
+
     dispatch(updateMusicRequest(updatedMusic))
     dispatch(fetchMusicRequest())
 
     dispatch(musicUpdateSucce())
 
-    setTimeout(()=>{
-   
+    setTimeout(() => {
+
       dispatch(fetchMusicRequest())
       dispatch(musicUpdateEnd())
-    },1500)
-    setTimeout(()=>{
-   
+    }, 1500)
+    setTimeout(() => {
+
       navigate('/')
-    },1800)
+    }, 1800)
   };
 
   const handleCancel = () => {
- 
-      navigate('/');
+
+    navigate('/');
   };
 
   return (
     <div>
-    {updated &&  <UpdatedSuccessfully />}
+      {updated && <UpdatedSuccessfully />}
       <Container>
         <form className="form" onSubmit={handleUpdate}>
           <div className="input-box">
@@ -91,9 +73,9 @@ const UpdateMusic = () => {
           </div>
           <div className="column">
             <div className="input-box">
-            <FileUpdate htmlFor="image">
-             <MyImages src={imagePreview} alt="Image Preview" />
-            </FileUpdate>
+              <FileUpdate htmlFor="image">
+                <MyImages src={imagePreview} alt="Image Preview" />
+              </FileUpdate>
               <input type="file" onChange={(e) => handleImage(e)} name='image' accept="image/*" id='image' hidden />
             </div>
           </div>

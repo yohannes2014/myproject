@@ -1,43 +1,36 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { RiDeleteBin6Line, FaRegEdit, FaPlayCircle } from '../icons/index'; 
+import { RiDeleteBin6Line, FaRegEdit, FaPlayCircle } from '../icons/index';
 import { findMuiscById, setRemoveCard, totalMUsicItem } from "../features/musicsSlice";
 import { setMusicPlay } from "../features/musicPlayerSlice";
 import { Card, Mycard, Discription, Music, MyBtns, Edit, Delete, Overlay, PlayCard } from "../styled/MusicCard.styles";
 import { useEffect } from "react";
 import { imageUrl } from "../api/musicApi";
 import { Warnning } from "./Notification";
-import { RootState, Musics} from "../types/musicTypes"
+import { Musics } from "../types/musicTypes"
 import Loading from "./Loading";
+import { useMusicCard } from "../hooks/useMusic";
 
-const MusicCard: React.FC = () => {
-
-  const dispatch = useDispatch();
-  const musics = useSelector((state: RootState) => state.musics.musics); 
-  const warning = useSelector((state: RootState) => state.musics.removeMusic);
-  const loading = useSelector((state: RootState) => state.musics.loading);
+const MusicCard: React.FC = () => { 
   
-  const navigate = useNavigate();
-  const total = musics.length;
+  const { musics, loading, warning, navigate, total, dispatch } = useMusicCard();
 
   useEffect(() => {
     dispatch(totalMUsicItem(total));
-  }, [dispatch, total]); 
+  }, [dispatch, total]);
 
   const handleDelete = (id: string) => {
     dispatch(findMuiscById(id));
     dispatch(setRemoveCard());
   };
 
-  const handlePlay = (music:Musics) => {
+  const handlePlay = (music: Musics) => {
     dispatch(setMusicPlay({
-      musics: [music],  
-      setPlay: true,    
-      setPlayer: true,  
+      musics: [music],
+      setPlay: true,
+      setPlayer: true,
     }));
   };
 
-  const editHandler = (music :Musics) => {
+  const editHandler = (music: Musics) => {
     navigate(`/Update/${music._id}`);
   };
 
@@ -45,17 +38,16 @@ const MusicCard: React.FC = () => {
     <>
       {warning && <Warnning />}
       {loading && <Loading />}
-      
+
       {musics.map((music) => (
         <Card key={music._id} >
           <Overlay>
-            <PlayCard  onClick={()=>handlePlay(music)}  > 
+            <PlayCard onClick={() => handlePlay(music)}  >
               <FaPlayCircle className='CardBtn' />
             </PlayCard>
             <MyBtns>
               <Edit onClick={() => editHandler(music)} ><FaRegEdit /></Edit>
               <Delete onClick={() => handleDelete(music._id)}><RiDeleteBin6Line /></Delete>
-             
             </MyBtns>
           </Overlay>
           <Mycard>
