@@ -22,7 +22,7 @@ const MusicCard: React.FC = () => {
 
   useEffect(() => {
     dispatch(totalMUsicItem(total));
-  }, [dispatch, total]);
+  }, [dispatch, total]); 
 
   const handleDelete = (id: string) => {
     dispatch(findMuiscById(id));
