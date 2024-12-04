@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { fetchMusicRequest, musicUpdateEnd, musicUpdateSucce, updateMusicRequest } from '../features/musicsSlice';
-import { Cancel, Container, FileUpdate, MyImages, Submit } from "../styled/Form.styles";
+import { Cancel, CancelButton, Container, FileUpdate, Form, Input, InputBox, InputButtonBox, MyImages, Submit, SubmitButton } from "../styled/Form.styles";
 import { UpdatedSuccessfully } from "./Notification";
 import { useUpdate } from '../hooks/useMusic';
 
@@ -58,19 +58,19 @@ const UpdateMusic = () => {
     <div>
       {updated && <UpdatedSuccessfully />}
       <Container>
-        <form className="form" onSubmit={handleUpdate}>
-          <div className="input-box">
-            <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} name='title' placeholder="Title" autoFocus />
-          </div>
-          <div className="input-box">
-            <input type="text" value={artist} onChange={(e) => setArtist(e.target.value)} name='artist' placeholder="Artist" />
-          </div>
-          <div className="input-box">
-            <input type="text" value={album} onChange={(e) => setAlbum(e.target.value)} name='album' placeholder="Album" />
-          </div>
-          <div className="input-box">
-            <input type="text" value={genres} onChange={(e) => setGenres(e.target.value)} name='genres' placeholder="Genres" />
-          </div>
+        <Form className="form" onSubmit={handleUpdate}>
+          <InputBox>
+            <Input type="text" value={title} onChange={(e) => setTitle(e.target.value)} name='title' placeholder="Title" autoFocus />
+          </InputBox>
+          <InputBox>
+            <Input type="text" value={artist} onChange={(e) => setArtist(e.target.value)} name='artist' placeholder="Artist" />
+          </InputBox>
+          <InputBox>
+            <Input type="text" value={album} onChange={(e) => setAlbum(e.target.value)} name='album' placeholder="Album" />
+          </InputBox>
+          <InputBox>
+            <Input type="text" value={genres} onChange={(e) => setGenres(e.target.value)} name='genres' placeholder="Genres" />
+          </InputBox>
           <div className="column">
             <div className="input-box">
               <FileUpdate htmlFor="image">
@@ -79,15 +79,15 @@ const UpdateMusic = () => {
               <input type="file" onChange={(e) => handleImage(e)} name='image' accept="image/*" id='image' hidden />
             </div>
           </div>
-          <div className="column">
-            <div className="input-box">
+          <InputButtonBox>
+            <SubmitButton>
               <Submit type="submit">Update Music</Submit>
-            </div>
-            <div className="input-box">
+            </SubmitButton>
+            <CancelButton>
               <Cancel onClick={handleCancel}>Cancel</Cancel>
-            </div>
-          </div>
-        </form>
+            </CancelButton>
+          </InputButtonBox>
+        </Form>
       </Container>
     </div>
   );

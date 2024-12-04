@@ -57,14 +57,11 @@
 .container .form {
   margin-top: 30px;
 }
-.form .input-box {
-  width: 100%;
-  margin-top: 20px;
-}
+
 .input-box label {
   color: #333;
 }
-.form :where(.input-box input, .select-box) {
+/* .form :where(.input-box input, .select-box) {
   position: relative;
   height: 50px;
   width: 500px;
@@ -84,7 +81,7 @@
   column-gap: 15px;
   
 }
-
+ */
 
 
 /*Responsive*/
@@ -184,7 +181,3 @@ color: rgb(11, 1, 45);
     width: 0.1rem;
     cursor: pointer;
   }
-
-
-  
-

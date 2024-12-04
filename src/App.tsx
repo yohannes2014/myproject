@@ -1,12 +1,12 @@
 import './App.css';
 import Header from './component/Header';
 import Contact from './component/Contact';
-import AllRoutes from './routes/routes';
 import useFetch from './hooks/useFetch';
 import { Main } from './styled/Main.styles';
 import AudioPlayer from './component/AudioPlayer';
 import { ThemeProvider } from '@emotion/react';
 import theme from './theme/themes';
+import Home from './Page/Home';
 
 const App: React.FC = () => {
 
@@ -16,9 +16,9 @@ useFetch();
     <>
      <ThemeProvider theme={theme} >
         <Contact />
-          <Header />
+        <Header />
         <Main>
-          <AllRoutes />
+          <Home />
         </Main>
        <AudioPlayer />
       </ThemeProvider>

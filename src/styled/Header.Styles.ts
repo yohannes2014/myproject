@@ -9,11 +9,12 @@ export const Container = styled.div`
     right: 0;
     position: sticky;
     box-shadow: ${theme.shadow.header};
-    z-index: 10;
+    z-index: 100;
     display:flex;
     flex-direction:column;
     align-items:center;
-    background-color: white;   
+    background-color: white;
+     
 `;
 
 

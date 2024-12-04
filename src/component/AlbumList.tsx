@@ -1,5 +1,5 @@
 import React from 'react'
-import { AlbumCont, ListHeader, DiscTitle, HeroSection, ListDiscrip, ListAlbum, ListofMusic, Detail, AlbumPhoto, AlbumImage } from '../styled/Musics.styles'
+import { AlbumCont, ListHeader, DiscTitle, HeroSection, ListDiscrip, ListAlbum, ListofMusic, Detail, AlbumPhoto, AlbumImage,  TitleDisc, Title} from '../styled/Musics.styles'
 import { setMusicPlay } from '../features/musicPlayerSlice';
 import { musicPlayer } from '../types/musicTypes';
 import { imageUrl } from '../api/musicApi';
@@ -29,21 +29,19 @@ const AlbumList: React.FC = () => {
             <AlbumPhoto>
               <AlbumImage src={`${imageUrl}/${albumTitle.image}`} alt='album' />
             </AlbumPhoto>
-            <div>
-              <h3>{albumTitle.album}</h3>
-              <h5>{albumTitle.artist}</h5>
-            </div>
+            <TitleDisc>
+              <Title>{albumTitle.album}</Title>
+              <Title>{albumTitle.artist}</Title>
+            </TitleDisc>
           </ListHeader>
           {albumList.map((music) => (
             <ListofMusic>
-
               <ListAlbum key={music._id} onClick={() => handlePlay({ musics: [music], setPlay: true, setPlayer: false })} >
                 <ListDiscrip>
                   <DiscTitle>{music.title}</DiscTitle>
                   <Detail>Duration : {music.duration}</Detail>
                 </ListDiscrip>
               </ListAlbum>
-
             </ListofMusic>))}
         </AlbumCont>
       </HeroSection>

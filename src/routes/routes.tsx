@@ -1,5 +1,4 @@
 import { Routes, Route } from "react-router-dom";
-import Home from "../Page/Home";
 import NewMusic from "../component/NewMusic";
 import Albums from "../component/Albums";
 import Genres from "../component/Genres";
@@ -8,12 +7,13 @@ import UpdateMusic from "../component/UpdateMusic";
 import AlbumList from "../component/AlbumList";
 import ArtistList from "../component/ArtistList";
 import Page404 from "../Page/Page404";
+import MusicLists from "../component/MusicLists";
 
 const AllRoutes = () => {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<MusicLists />} />
         <Route path="/Artist" element={<Artist />} />
         <Route path="/Artist/:artist" element={<ArtistList />} />
         <Route path="/Album" element={<Albums />} />

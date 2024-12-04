@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { GenresHeader, Detail, DiscSpan, HeroSection, ListDiscrip, ListItem, Button } from '../styled/Musics.styles';
+import { GenresHeader, Detail, DiscSpan, HeroSection, ListDiscrip, ListItem, Button, GenresList } from '../styled/Musics.styles';
 import { setMusicPlay } from '../features/musicPlayerSlice';
 import { totalMUsicItem } from '../features/musicsSlice';
 import { musicPlayer } from '../types/musicTypes';
@@ -54,6 +54,7 @@ const Genres: React.FC = () => {
             </div>
           ))}
         </GenresHeader>
+        <GenresList>
         {filteredMusic.map((music) => (
           <ListItem key={music._id} onClick={() => handlePlay({ setPlay: true, musics: [music], setPlayer: false })}  >
             <ListDiscrip>
@@ -63,6 +64,7 @@ const Genres: React.FC = () => {
             </ListDiscrip>
           </ListItem>
         ))}
+        </GenresList>
       </HeroSection>
     </>
   );

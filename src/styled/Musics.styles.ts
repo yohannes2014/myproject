@@ -7,13 +7,13 @@ interface ButtonProps {
   }
   
 export const HeroSection = styled.div`
-    margin:100px auto;
-    width: 90%;
+    margin:70px auto;
+    width: 95%;
     padding: 10px;
 `;
 
 export const ListItem = styled.div`
-   width: 100%;
+    width: 100%;
     height: 80px;
     background-image: linear-gradient(45deg, rgb(211, 211, 249) , rgba(225, 221, 250, 0.712), rgb(255, 255, 255));
     border-radius: 10px;
@@ -60,13 +60,14 @@ export const Detail = styled.div`
 `;
 export const DiscTitle = styled.div`
     font-weight: bold;
-    font-size:25px;
+    font-size:${theme.listDiscTitle[0]};
     color: rgb(2, 2, 58);
     width:${theme.listHeaderWidth[0]};
 
     ${theme.breakpoints.map((bp, index) => `
     @media (max-width: ${bp}) {
       width: ${theme.listHeaderWidth[index + 1]};
+      font-size:${theme.listDiscTitle[index + 1]};
     
     }
   `)}
@@ -81,8 +82,8 @@ export const AlbumCont = styled.div`
 export const ListHeader = styled.div`
    
     width:${theme.listHeaderWidth[0]};
-    background-color:wheat;
-    border-radius: 40px 0px 40px 0px;
+    background-color:#eae6f7;
+    border-radius:10px;
     padding-left:50px;
     margin:10px auto;
     display:flex;
@@ -97,6 +98,10 @@ export const ListHeader = styled.div`
     }
   `)}
    
+`;
+
+export const GenresList = styled.div`
+margin-top:30px;
 `;
 export const AlbumPhoto = styled.div`
  
@@ -113,6 +118,30 @@ export const AlbumPhoto = styled.div`
     }
   `)}
   `;
+
+  export const TitleDisc = styled.div`
+  height:100%;
+  padding:5px;
+
+ 
+  `;
+
+  export const Title = styled.p`
+  font-weight:bold;
+  font-size:${theme.listTitleFont[0]};
+
+
+  ${theme.breakpoints.map((bp, index) => `
+    @media (max-width: ${bp}) {
+      font-size: ${theme.listTitleFont[index + 1]};
+      
+    
+    }
+  `)}
+
+
+  
+  `; 
 
   export const AlbumImage = styled.img`
    width: ${theme.listPhotoWidth[0]};
@@ -133,22 +162,25 @@ export const AlbumPhoto = styled.div`
 
 export const GenresHeader = styled.div`
 
-    width:100%;
-    background-color:wheat;
-    border-radius: 40px 0px 40px 0px;
+    width:80%;
+    border-bottom:solid wheat 1px;
     padding:10px 50px;
-    margin-bottom:20px;
     display:flex;
     justify-content: center;
     flex-direction: row;
     position: sticky;
-    top: 150px;
-    z-index: 100px;     
+    background: linear-gradient(to top, #eae6f7, white);
+    top:135px;
+    z-index: 10px;  
+    margin:auto; 
+    flex-wrap:wrap;  
 `;
 
 export const ListofMusic = styled.div`
-    height:100px;
+    height:${theme.listofMusicHeight[0]};
     width:100%;
+
+    
 `;
 
 export const ListAlbum = styled.div`

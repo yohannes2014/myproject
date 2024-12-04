@@ -1,14 +1,11 @@
-import { Mycard } from '../styled/Main.styles';
-import MusicCard from '../component/MusicCard';
+import AllRoutes from "../routes/routes"
 
 const Home: React.FC = () => {
 
   return (
-    <>
-      <Mycard>
-        <MusicCard />
-      </Mycard>
-    </>
+   <>
+   <AllRoutes />
+   </>
   )
 }
 

@@ -2,7 +2,7 @@ import { addMusicRequest, fetchAlbumsRequest, fetchArtistsRequest, fetchGenresRe
 import { useDispatch, useSelector } from 'react-redux';
 import { defaultImage } from '../api/musicApi';
 import { useNavigate } from 'react-router-dom';
-import { Cancel, Container, File, Submit } from '../styled/Form.styles';
+import { Cancel, Container, Input, Submit, Form, InputBox, InputButtonBox, FormButton, FileInput, SubmitButton, CancelButton } from '../styled/Form.styles';
 import { AddedSuccesfully } from "./Notification";
 import { useMusic } from '../hooks/useMusic';
 
@@ -72,38 +72,38 @@ const NewMusic = () => {
     <div>
       {newMusic && <AddedSuccesfully />}
       <Container>
-        <form onSubmit={handleSubmit} className="form" encType='multipart/form-data'>
-          <div className="input-box">
-            <input type="text" onChange={(e) => setTitle(e.target.value)} name='title' placeholder="Title" autoFocus />
-          </div>
-          <div className="input-box">
-            <input type="text" onChange={(e) => setArtist(e.target.value)} name='artist' placeholder="Artist" />
-          </div>
-          <div className="input-box">
-            <input type="text" onChange={(e) => setAlbum(e.target.value)} name='album' placeholder="Album" />
-          </div>
-          <div className="input-box">
-            <input type="text" onChange={(e) => setGenres(e.target.value)} name='genres' placeholder="Genres" />
-          </div>
-          <div className="column">
-            <div className="input-box">
-              <File htmlFor='image'>Music Image</File>
+        <Form onSubmit={handleSubmit} className="form" encType='multipart/form-data'>
+          <InputBox >
+            <Input type="text" onChange={(e) => setTitle(e.target.value)} name='title' placeholder="Title" autoFocus />
+          </InputBox>
+          <InputBox >
+            <Input type="text" onChange={(e) => setArtist(e.target.value)} name='artist' placeholder="Artist" />
+          </InputBox>
+          <InputBox >
+            <Input type="text" onChange={(e) => setAlbum(e.target.value)} name='album' placeholder="Album" />
+          </InputBox>
+          <InputBox>
+            <Input type="text" onChange={(e) => setGenres(e.target.value)} name='genres' placeholder="Genres" />
+          </InputBox>
+          <InputButtonBox>
+            <FormButton>
+              <FileInput htmlFor='image'>Music Image</FileInput>
               <input type="file" onChange={(e) => setImage(e.target.files[0])} name='image' accept="image/*" id='image' hidden />
-            </div>
-            <div className="input-box">
-              <File htmlFor='music'>Music File</File>
+            </FormButton>
+            <FormButton>
+              <FileInput  htmlFor='music'>Music File</FileInput>
               <input type="file" id='music' onChange={(e) => setAudio(e.target.files[0])} name='audio' accept='audio/*' hidden />
-            </div>
-          </div>
-          <div className="column">
-            <div className="input-box">
+            </FormButton>
+          </InputButtonBox>
+          <InputButtonBox>
+            <SubmitButton>
               <Submit type='submit'>Add New</Submit>
-            </div>
-            <div className="input-box">
+            </SubmitButton>
+            <CancelButton>
               <Cancel onClick={handleCancel}>Cancel</Cancel>
-            </div>
-          </div>
-        </form>
+            </CancelButton>
+          </InputButtonBox>
+        </Form>
       </Container>
     </div>
   );

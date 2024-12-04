@@ -1,5 +1,5 @@
 import React from 'react'
-import { AlbumCont, ListHeader, Detail, DiscTitle, HeroSection, ListAlbum, ListDiscrip, ListofMusic, AlbumPhoto, AlbumImage } from '../styled/Musics.styles';
+import { AlbumCont, ListHeader, Detail, DiscTitle, HeroSection, ListAlbum, ListDiscrip, ListofMusic, AlbumPhoto, AlbumImage, TitleDisc, Title } from '../styled/Musics.styles';
 import { setMusicPlay } from '../features/musicPlayerSlice';
 import { musicPlayer } from '../types/musicTypes';
 import { imageUrl } from '../api/musicApi';
@@ -25,10 +25,10 @@ const ArtistList: React.FC = () => {
           <AlbumPhoto>
             <AlbumImage src={`${imageUrl}/${trackHeader.image}`} alt='album' />
           </AlbumPhoto>
-          <div>
-            <h3>{trackHeader.album}</h3>
-            <h5>{trackHeader.artist}</h5>
-          </div>
+          <TitleDisc>
+            <Title>{trackHeader.album}</Title>
+            <Title>{trackHeader.artist}</Title>
+          </TitleDisc>
         </ListHeader>
         <ListofMusic>
           {track.map((music, id) => (
