@@ -66,7 +66,7 @@ export const Edit = styled.button`
   font-size:1.5em;
   background-color: rgb(174, 164, 164);
   color:white;
-  margin-top:10px;
+  margin-top:30px;
   transition: 0.3s ease-in-out;
 :hover{
     background-color: rgb(137, 131, 131);
