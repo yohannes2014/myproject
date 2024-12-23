@@ -42,6 +42,7 @@ const theme = {
   playerImageHeight: ['70px', '60px', '50px', '40px'],
 
   formWidth:['600px','550px', '500px', '450px', '400px','350px','300px','250px', '200px','150px'],
+  marginFormTop:['0px','-130px'],
 
   formInputHeight:['55px', '50px', '45px', '40px','35px','30px'],
   formBUttonWidth:['250px', '225px', '200px', '175px', '150px', '125px', '100px', '75px','70px'],

@@ -20,11 +20,14 @@ export const Form = styled.form`
 width:${theme.formWidth[0]};
 box-shadow: 0px 0px 6px 0.1px skyblue;
 padding:10px;
+margin-top:${theme.marginFormTop[0]};
 border-radius:10px;
+
 
 ${theme.breakpoints.map((bp, index) => `
     @media (max-width: ${bp}) {
       width: ${theme.formWidth[index + 1]};
+      margin-top: ${theme.marginFormTop[index + 1]};
       
     }
   `)}
