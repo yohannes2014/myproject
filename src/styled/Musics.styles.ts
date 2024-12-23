@@ -164,16 +164,15 @@ export const GenresHeader = styled.div`
 
     width:80%;
     border-bottom:solid wheat 1px;
-    padding:10px 50px;
+   padding:10px 50px;
     display:flex;
     justify-content: center;
     flex-direction: row;
     position: sticky;
     background: linear-gradient(to top, #eae6f7, white);
-    top:135px;
-    z-index: 10px;  
-    margin:auto; 
-    flex-wrap:wrap;  
+    flex-wrap:wrap;
+    top:135px;  
+    
 `;
 
 export const ListofMusic = styled.div`
@@ -192,7 +191,6 @@ export const ListAlbum = styled.div`
     transition: 0.3s ease-in-out;
     display: flex;
     margin: 7px;
-
     :hover{
         box-shadow: 0px 0px 12px 1px rgba(16, 16, 215, 0.418);
     }
@@ -202,7 +200,10 @@ export const Button = styled.button<ButtonProps>`
     padding:5px 10px;
     margin:5px;
     cursor: pointer;
+    z-index:1000;
     background-color: ${({ selected }) => (selected ? `${theme.colors.primary}` : '#fff')};
     color: ${({ selected }) => (selected ? '#fff' : '#000')};
     border-radius: 5px;
+    
 `;
+

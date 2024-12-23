@@ -45,7 +45,7 @@ const Header = () => {
           <NavLink onClick={() => navigate('/Genres')}>Genres</NavLink>
         </Nav>
 
-        <div className="DropDownCon">
+        <div className={!isOpen ? 'DropDownCon' : 'DropDownConClose'}>
           <div className={!isOpen ? 'dropDown' : 'dropDownClose'}>
             <NavLink onClick={Home}>Songs</NavLink>
             <NavLink onClick={Album}>Albums</NavLink>

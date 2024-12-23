@@ -9,7 +9,7 @@ export const Container = styled.div`
     right: 0;
     position: sticky;
     box-shadow: ${theme.shadow.header};
-    z-index: 100;
+    z-index: 10;
     display:flex;
     flex-direction:column;
     align-items:center;
@@ -148,9 +148,13 @@ export const Sub = styled.div`
     width: ${theme.navWidth[0]};
     margin: auto;
     margin-top:10px;
-    height: ${theme.navHeight[2]};
+    height: ${theme.navHeight[0]};
     padding-left:20px;
     background-color:white;
+  background-color:yellow;
+    z-index:-10;
+
+
 ${theme.breakpoints.map((bp, index) => `
     @media (max-width: ${bp}) {
       width: ${theme.navWidth[index + 1]};

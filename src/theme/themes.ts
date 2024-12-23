@@ -17,6 +17,7 @@ const theme = {
   navMenu: ['400px', '0px'],
   logoFont: ['2em', '1.8em', '1.6em', '1.4em'],
 
+
   contactHeight: ['30px', '29px'],
   contactWidth: ['1250px', '1024px', '990px', '850px', '750px', '650px', '480px', '390px', '300px'],
 
