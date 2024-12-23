@@ -150,9 +150,9 @@ export const Sub = styled.div`
     margin-top:10px;
     height: ${theme.navHeight[0]};
     padding-left:20px;
-    background-color:white;
-  background-color:yellow;
+    background: linear-gradient(to right,rgb(232, 229, 239), white ,white);
     z-index:-10;
+    border-radius:8px;
 
 
 ${theme.breakpoints.map((bp, index) => `
